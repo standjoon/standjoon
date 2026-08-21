@@ -48,10 +48,11 @@
 				flex-direction: column; 
 				justify-content: center;
 				align-items: center;
-				min-height: 65vh;
+				min-height: 60vh;
 				width: 100%;
 				padding: 0 20px;
 				box-sizing: border-box;
+				text-align: center;
 			}
 
 			/* 기본 이미지 박스 (PC 기준) */
@@ -84,23 +85,37 @@
 				opacity: 1;
 			}
 
-			/* Welcome 텍스트 스타일 */
+			/* Welcome 텍스트 스타일 (아래쪽 간격을 25px로 설정) */
 			.welcome-text {
 				font-family: 'Oswald', sans-serif;
 				font-size: 1rem;
 				letter-spacing: 2px; 
 				color: #666666;
 				text-transform: uppercase;
+				margin: 0 0 25px 0;
+			}
+
+			/* 🎨 standjoon archive studio 텍스트 스타일 */
+			.intro-text {
+				font-family: 'Oswald', 'NanumHuman', sans-serif;
+				font-size: 0.85rem;
+				letter-spacing: 1.5px;
+				color: #888888;
+				text-transform: uppercase;
 				margin: 0;
 			}
 
-			/* 📱 모바일 화면(폭 736px 이하)에서 강제로 더 작게 줄이기 */
+			/* 📱 모바일 화면(폭 736px 이하)에서 크기 조절 */
 			@media screen and (max-width: 736px) {
 				.hover-image-box {
-					max-width: 150px !important; /* 모바일에서 사진 최대 크기를 150px로 강제 제한 */
+					max-width: 150px !important;
 				}
 				.welcome-text {
-					font-size: 0.85rem !important; /* 글자 크기도 살짝 축소 */
+					font-size: 0.85rem !important;
+					margin-bottom: 20px !important; /* 모바일에서는 간격을 살짝 좁혀도 예쁩니다 */
+				}
+				.intro-text {
+					font-size: 0.75rem !important;
 				}
 			}
 		</style>
@@ -108,7 +123,7 @@
 	<body class="is-preload">
 		<div id="page-wrapper">
 			
-			<!-- Header: 404 에러 주범인 Profile 메뉴 삭제 완료 -->
+			<!-- Header -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
@@ -117,14 +132,14 @@
 				</nav>
 			</section>
 
-			<!-- 중앙 이미지 및 Welcome 텍스트 영역 -->
+			<!-- 중앙 이미지 및 텍스트 영역 -->
 			<div class="center-image-container">
 				<div class="hover-image-box">
-					<!-- 💡 깃허브 images 폴더 안의 실제 파일명과 대소문자를 꼭 맞춰주세요! -->
 					<img src="images/lego.png" alt="Lego" class="img-default" />
 					<img src="images/legochange.png" alt="Lego Change" class="img-hover" />
 				</div>
 				<p class="welcome-text">Welcome</p>
+				<p class="intro-text">standjoon archive studio</p>
 			</div>
 
 		</div>
