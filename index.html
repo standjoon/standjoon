@@ -10,36 +10,38 @@
 		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
-			/* 1. 배경 및 폰트 전체 초기화 (완벽한 흰색 배경) */
 			body { 
 				font-family: 'Oswald', 'NanumHuman', sans-serif !important; 
 				background-color: #ffffff !important; 
-			}
-			h1, h2, h3 { 
-				font-family: 'Oswald', 'NanumHumanbold', sans-serif !important; 
 			}
 			#page-wrapper { 
 				background-color: #ffffff !important; 
 			}
 			
-			/* 2. 템플릿의 원래 푸터나 지저분한 여백 영역 강제 숨김 */
+			/* 제목이 사라진 만큼 상단 여백을 살짝 조정 */
+			#header {
+				padding-top: 3em !important;
+				padding-bottom: 2em !important;
+			}
+			
+			/* 푸터/기타 영역 숨김 */
 			#footer, .wrapper { 
 				display: none !important; 
 			}
 
-			/* 3. 이미지를 화면 정중앙에 배치하는 박스 */
+			/* 중앙 이미지 박스 */
 			.center-image-container {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				min-height: 75vh; /* 화면 높이 기준 중앙 정렬 */
+				min-height: 70vh;
 				width: 100%;
 			}
 
-			/* 4. 마우스 오버 효과를 위한 설정 (마우스 대면 이미지 교체) */
+			/* 이미지 마우스 오버 효과 */
 			.hover-image-box {
 				position: relative;
-				width: 300px; /* 여기서 이미지 크기 조절 (예: 300px) */
+				width: 300px; /* 이미지 크기 조절 */
 				cursor: pointer;
 			}
 			.hover-image-box .img-default {
@@ -54,22 +56,22 @@
 				left: 0;
 				width: 100%;
 				height: auto;
-				opacity: 0; /* 평소엔 숨김 */
+				opacity: 0;
 				transition: opacity 0.3s ease;
 			}
 			.hover-image-box:hover .img-default {
-				opacity: 0; /* 마우스 올리면 기본 이미지 사라짐 */
+				opacity: 0;
 			}
 			.hover-image-box:hover .img-hover {
-				opacity: 1; /* 마우스 올리면 바뀔 이미지 등장 */
+				opacity: 1;
 			}
 		</style>
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
-			<!-- Header (상단 메뉴 영역) -->
+			
+			<!-- Header: 제목 삭제하고 메뉴만 남김 -->
 			<section id="header">
-				<h1><a href="index.html">standjoon</a></h1>
 				<nav id="nav">
 					<ul>
 						<li class="current"><a href="index.html">Home</a></li>
@@ -78,13 +80,12 @@
 				</nav>
 			</section>
 
-			<!-- 정중앙 마우스 오버 이미지 영역 -->
+			<!-- 중앙 이미지 영역 -->
 			<div class="center-image-container">
 				<div class="hover-image-box">
-					<!-- 평소에 보이는 기본 이미지 (예: 푸른 한복 선비 레고) -->
-					<img src="images/lego-sunbi.jpg" alt="Default Image" class="img-default" />
-					<!-- 마우스를 올렸을 때 나타나는 이미지 -->
-					<img src="images/lego-change.jpg" alt="Hover Image" class="img-hover" />
+					<!-- 본인의 이미지 파일 경로로 수정하세요 -->
+					<img src="images/lego-sunbi.jpg" alt="Lego Sunbi" class="img-default" />
+					<img src="images/lego-change.jpg" alt="Lego Change" class="img-hover" />
 				</div>
 			</div>
 
