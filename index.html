@@ -18,7 +18,7 @@
 				background-color: #ffffff !important; 
 			}
 			
-			/* 제목이 사라진 만큼 상단 여백을 살짝 조정 */
+			/* 상단 여백 조정 */
 			#header {
 				padding-top: 3em !important;
 				padding-bottom: 2em !important;
@@ -27,6 +27,19 @@
 			/* 푸터/기타 영역 숨김 */
 			#footer, .wrapper { 
 				display: none !important; 
+			}
+
+			/* 🎨 메뉴 선택된(current) 곳의 빨간색 배경 강제 제거 및 깔끔한 텍스트화 */
+			#nav > ul > li.current > a, 
+			#nav > ul > li:hover > a {
+				background: transparent !important; 
+				color: #111111 !important;          
+				box-shadow: none !important;        
+			}
+			
+			#nav > ul > li > a {
+				color: #555555 !important;
+				background: transparent !important;
 			}
 
 			/* 중앙 이미지 박스 */
@@ -70,7 +83,7 @@
 	<body class="is-preload">
 		<div id="page-wrapper">
 			
-			<!-- Header: 제목 삭제하고 메뉴만 남김 -->
+			<!-- Header: 제목 없고 메뉴만 깔끔하게 남김 -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
