@@ -54,11 +54,11 @@
 				box-sizing: border-box;
 			}
 
-			/* 🎨 모바일 크기 최적화된 이미지 박스 */
+			/* 기본 이미지 박스 (PC 기준) */
 			.hover-image-box {
 				position: relative;
 				width: 100%;
-				max-width: 220px; /* PC에서는 최대 220px로 아담하게, 모바일에서는 화면에 맞춰 축소됨 */
+				max-width: 220px; 
 				cursor: pointer;
 				margin-bottom: 20px; 
 			}
@@ -93,6 +93,16 @@
 				text-transform: uppercase;
 				margin: 0;
 			}
+
+			/* 📱 모바일 화면(폭 736px 이하)에서 강제로 더 작게 줄이기 */
+			@media screen and (max-width: 736px) {
+				.hover-image-box {
+					max-width: 150px !important; /* 모바일에서 사진 최대 크기를 150px로 강제 제한 */
+				}
+				.welcome-text {
+					font-size: 0.85rem !important; /* 글자 크기도 살짝 축소 */
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -108,11 +118,11 @@
 				</nav>
 			</section>
 
-			<!-- 중앙 이미지 및 텍스트 영역 -->
+			<!-- 중앙 이미지 및 Welcome 텍스트 영역 -->
 			<div class="center-image-container">
 				<div class="hover-image-box">
-					<img src="images/lego.png" alt="Lego" class="img-default" />
-					<img src="images/legochange.png" alt="Lego Change" class="img-hover" />
+					<img src="images/lego.jpg" alt="Lego" class="img-default" />
+					<img src="images/legochange.jpg" alt="Lego Change" class="img-hover" />
 				</div>
 				<p class="welcome-text">Welcome</p>
 			</div>
