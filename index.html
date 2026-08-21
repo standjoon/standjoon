@@ -29,7 +29,7 @@
 				display: none !important; 
 			}
 
-			/* 🎨 메뉴 선택된(current) 곳의 빨간색 배경 강제 제거 및 깔끔한 텍스트화 */
+			/* 메뉴 선택된 곳의 빨간색 배경 제거 및 깔끔한 텍스트화 */
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
@@ -42,20 +42,25 @@
 				background: transparent !important;
 			}
 
-			/* 중앙 이미지 박스 */
+			/* 중앙 이미지 및 텍스트 정렬 */
 			.center-image-container {
 				display: flex;
+				flex-direction: column; 
 				justify-content: center;
 				align-items: center;
-				min-height: 70vh;
+				min-height: 65vh;
 				width: 100%;
+				padding: 0 20px;
+				box-sizing: border-box;
 			}
 
-			/* 이미지 마우스 오버 효과 */
+			/* 🎨 모바일 크기 최적화된 이미지 박스 */
 			.hover-image-box {
 				position: relative;
-				width: 300px; /* 이미지 크기 조절 */
+				width: 100%;
+				max-width: 220px; /* PC에서는 최대 220px로 아담하게, 모바일에서는 화면에 맞춰 축소됨 */
 				cursor: pointer;
+				margin-bottom: 20px; 
 			}
 			.hover-image-box .img-default {
 				display: block;
@@ -78,12 +83,22 @@
 			.hover-image-box:hover .img-hover {
 				opacity: 1;
 			}
+
+			/* Welcome 텍스트 스타일 */
+			.welcome-text {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1rem;
+				letter-spacing: 2px; 
+				color: #666666;
+				text-transform: uppercase;
+				margin: 0;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
 			
-			<!-- Header: 제목 없고 메뉴만 깔끔하게 남김 -->
+			<!-- Header -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
@@ -93,13 +108,13 @@
 				</nav>
 			</section>
 
-			<!-- 중앙 이미지 영역 -->
+			<!-- 중앙 이미지 및 텍스트 영역 -->
 			<div class="center-image-container">
 				<div class="hover-image-box">
-					<!-- 본인의 이미지 파일 경로로 수정하세요 -->
 					<img src="images/lego.png" alt="Lego" class="img-default" />
 					<img src="images/legochange.png" alt="Lego Change" class="img-hover" />
 				</div>
+				<p class="welcome-text">Welcome</p>
 			</div>
 
 		</div>
