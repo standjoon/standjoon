@@ -42,17 +42,18 @@
 				background: transparent !important;
 			}
 
-			/* 중앙 이미지 및 텍스트 정렬 */
+			/* 중앙 이미지 및 텍스트 정렬 (PC 기준 250px 아래로 내림) */
 			.center-image-container {
 				display: flex;
 				flex-direction: column; 
 				justify-content: center;
 				align-items: center;
-				min-height: 60vh;
+				min-height: 50vh;
 				width: 100%;
 				padding: 0 20px;
 				box-sizing: border-box;
 				text-align: center;
+				margin-top: 250px; /* 💡 PC에서 아래로 250px 밀어냄 */
 			}
 
 			/* 기본 이미지 박스 (PC 기준) */
@@ -92,7 +93,7 @@
 				letter-spacing: 2px; 
 				color: #666666;
 				text-transform: uppercase;
-				margin: 0 0 280px 0;
+				margin: 0 0 25px 0;
 			}
 
 			/* 🎨 standjoon archive studio 텍스트 스타일 (소문자 적용) */
@@ -105,8 +106,12 @@
 				margin: 0;
 			}
 
-			/* 📱 모바일 화면(폭 736px 이하)에서 크기 조절 */
+			/* 📱 모바일 화면(폭 736px 이하)에서 크기 조절 (모바일은 margin-top을 초기화해서 영향 안 받게 함) */
 			@media screen and (max-width: 736px) {
+				.center-image-container {
+					margin-top: 0px !important; /* 모바일은 원래대로 유지 */
+					min-height: 60vh;
+				}
 				.hover-image-box {
 					max-width: 150px !important;
 				}
