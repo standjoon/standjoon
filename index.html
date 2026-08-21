@@ -85,23 +85,23 @@
 				opacity: 1;
 			}
 
-			/* Welcome 텍스트 스타일 (아래쪽 간격을 25px로 설정) */
+			/* Welcome 텍스트 스타일 (WELCOME은 대문자 유지) */
 			.welcome-text {
 				font-family: 'Oswald', sans-serif;
 				font-size: 1rem;
 				letter-spacing: 2px; 
 				color: #666666;
 				text-transform: uppercase;
-				margin: 0 0 80px 0;
+				margin: 0 0 280px 0;
 			}
 
-			/* 🎨 standjoon archive studio 텍스트 스타일 */
+			/* 🎨 standjoon archive studio 텍스트 스타일 (소문자 적용) */
 			.intro-text {
 				font-family: 'Oswald', 'NanumHuman', sans-serif;
 				font-size: 0.85rem;
 				letter-spacing: 1.5px;
 				color: #888888;
-				text-transform: uppercase;
+				text-transform: lowercase; /* 전부 소문자로 강제 변환 */
 				margin: 0;
 			}
 
@@ -112,7 +112,7 @@
 				}
 				.welcome-text {
 					font-size: 0.85rem !important;
-					margin-bottom: 20px !important; /* 모바일에서는 간격을 살짝 좁혀도 예쁩니다 */
+					margin-bottom: 20px !important;
 				}
 				.intro-text {
 					font-size: 0.75rem !important;
