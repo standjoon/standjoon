@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>standjoon - project detail</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
+		<style>
+			body { 
+				font-family: 'Oswald', 'NanumHuman', sans-serif !important; 
+				background-color: #ffffff !important; 
+			}
+			#page-wrapper { 
+				background-color: #ffffff !important; 
+			}
+			
+			/* 상단 여백 조정 */
+			#header {
+				padding-top: 3em !important;
+				padding-bottom: 2em !important;
+			}
+			
+			/* 푸터/기타 영역 숨김 */
+			#footer, .wrapper { 
+				display: none !important; 
+			}
+
+			/* 메뉴 선택된 곳의 빨간색 배경 제거 및 깔끔한 텍스트화 */
+			#nav > ul > li.current > a, 
+			#nav > ul > li:hover > a {
+				background: transparent !important; 
+				color: #111111 !important;          
+				box-shadow: none !important;        
+			}
+			
+			#nav > ul > li > a {
+				color: #555555 !important;
+				background: transparent !important;
+			}
+
+			/* 상세 페이지 본문 컨테이너 */
+			.detail-container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 40px 20px 80px 20px;
+				box-sizing: border-box;
+			}
+
+			/* 목록으로 돌아가기 버튼 */
+			.back-link {
+				display: inline-block;
+				font-family: 'Oswald', sans-serif;
+				font-size: 0.9rem;
+				letter-spacing: 1px;
+				color: #888888;
+				text-decoration: none;
+				text-transform: uppercase;
+				margin-bottom: 30px;
+				transition: color 0.2s ease;
+			}
+
+			.back-link:hover {
+				color: #111111;
+			}
+
+			/* 상세 페이지 타이틀 */
+			.detail-title {
+				font-family: 'Oswald', sans-serif;
+				font-size: 2rem;
+				letter-spacing: 2px;
+				color: #111111;
+				text-transform: uppercase;
+				margin-bottom: 10px;
+			}
+
+			.detail-subtitle {
+				font-family: 'NanumHuman', sans-serif;
+				font-size: 1rem;
+				color: #777777;
+				margin-bottom: 30px;
+			}
+
+			/* 메인 상세 이미지 박스 */
+			.detail-img-box {
+				width: 100%;
+				margin-bottom: 40px;
+				background-color: #f0f0f0;
+			}
+
+			.detail-img-box img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+
+			/* 텍스트 설명 구역 */
+			.detail-content {
+				font-family: 'NanumHuman', sans-serif;
+				font-size: 1rem;
+				color: #555555;
+				line-height: 1.8;
+			}
+
+			.detail-content h3 {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1.2rem;
+				letter-spacing: 1px;
+				color: #111111;
+				margin-top: 30px;
+				margin-bottom: 15px;
+				text-transform: uppercase;
+			}
+
+			/* 모바일 화면 대응 */
+			@media screen and (max-width: 736px) {
+				.detail-container {
+					padding: 20px 15px 50px 15px;
+				}
+				.detail-title {
+					font-size: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+			
+			<!-- Header -->
+			<section id="header">
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li class="current"><a href="Architecture.html">Architecture</a></li>
+						<li><a href="Artwork.html">Artwork</a></li>
+					</ul>
+				</nav>
+			</section>
+
+			<!-- 상세 페이지 본문 영역 -->
+			<div class="detail-container">
+				<!-- 목록으로 돌아가기 -->
+				<a href="Architecture.html" class="back-link">&larr; Back to Architecture</a>
+
+				<!-- 작품 제목 및 부제 -->
+				<h2 id="p-title" class="detail-title">Project Title</h2>
+				<p id="p-subtitle" class="detail-subtitle">Project Subtitle & Concept</p>
+
+				<!-- 상세 대표 이미지 -->
+				<div class="detail-img-box">
+					<img src="images/lego.png" alt="Project Detail Image" />
+				</div>
+
+				<!-- 상세 설명 텍스트 -->
+				<div class="detail-content">
+					<h3>Project Overview</h3>
+					<p id="p-desc1">선택하신 프로젝트의 상세 기획 의도 및 대지 조건, 규모 등에 대한 기록이 들어가는 공간입니다.</p>
+					
+					<h3>Design Concept</h3>
+					<p id="p-desc2">스케치업 모델링을 통한 공간감 스터디와 재료적 특성을 담아내는 상세 설명란입니다.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- 자바스크립트: 주소창 뒤의 id 신호를 읽어서 글자를 바꿔주는 코드 -->
+		<script>
+			const urlParams = new URLSearchParams(window.location.search);
+			const idNum = urlParams.get('id') || '1';
+
+			const projectData = {
+				"1": { title: "Elevator Safety Agency HQ", subtitle: "3D Modeling & Massing Design Study", desc1: "승강기안전공단 청사 건물 3D 모델링 및 매싱 디자인 제안 작업입니다.", desc2: "파사드 루버와 글래스 커튼월의 조화를 중점적으로 스터디했습니다." },
+				"2": { title: "Facade Louver Study", subtitle: "Exterior Skin Detail Study", desc1: "건물 외피의 디테일과 일조 조절을 위한 루버 시스템 연구입니다.", desc2: "다양한 각도의 차양 효과를 스케치업으로 시뮬레이션하였습니다." },
+				"3": { title: "Glass Curtain Wall Concept", subtitle: "Modern Commercial Office Design", desc1: "현대적인 오피스 건물의 투명성과 구조미를 강조한 커튼월 디자인입니다.", desc2: "고층부와 저저층부의 재료적 대비를 탐구했습니다." }
+			};
+
+			if (projectData[idNum]) {
+				document.getElementById('p-title').innerText = projectData[idNum].title;
+				document.getElementById('p-subtitle').innerText = projectData[idNum].subtitle;
+				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
+				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
+			} else {
+				document.getElementById('p-title').innerText = "PROJECT TITLE 0" + idNum;
+				document.getElementById('p-subtitle').innerText = "Architecture & Space Archive";
+			}
+		</script>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
