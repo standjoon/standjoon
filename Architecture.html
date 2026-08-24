@@ -42,11 +42,11 @@
 				background: transparent !important;
 			}
 
-			/* 본문 영역 컨테이너 */
+			/* 본문 영역 컨테이너 (넓게 확장) */
 			.page-container {
-				max-width: 800px;
+				max-width: 1100px;
 				margin: 0 auto;
-				padding: 60px 20px;
+				padding: 40px 20px 80px 20px;
 				box-sizing: border-box;
 			}
 
@@ -57,28 +57,77 @@
 				letter-spacing: 2px;
 				color: #111111;
 				text-transform: uppercase;
-				margin-bottom: 30px;
+				margin-bottom: 40px;
 				text-align: left;
 			}
 
-			/* 본문 텍스트 스타일 */
-			.page-content {
-				font-family: 'NanumHuman', sans-serif;
-				font-size: 1rem;
-				color: #555555;
-				line-height: 1.8;
+			/* 🎨 3열 그리드 레이아웃 설정 */
+			.gallery-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr); /* 3열 정렬 */
+				gap: 30px; /* 칸 사이 간격 */
 			}
 
-			/* 📱 모바일 화면 대응 */
+			/* 개별 작품 카드 스타일 */
+			.gallery-item {
+				display: block;
+				text-decoration: none;
+				background: #ffffff;
+				transition: transform 0.3s ease;
+			}
+			
+			.gallery-item:hover {
+				transform: translateY(-5px); /* 마우스 올렸을 때 살짝 떠오르는 효과 */
+			}
+
+			/* 이미지 박스 */
+			.gallery-img-box {
+				width: 100%;
+				aspect-ratio: 4 / 3; /* 이미지 비율 고정 (원하시면 수정 가능) */
+				overflow: hidden;
+				background-color: #f0f0f0;
+				margin-bottom: 12px;
+			}
+
+			.gallery-img-box img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; /* 이미지가 찌그러지지 않고 꽉 차게 */
+				transition: opacity 0.3s ease;
+			}
+
+			.gallery-item:hover .gallery-img-box img {
+				opacity: 0.85;
+			}
+
+			/* 작품 제목 및 간단 설명 텍스트 */
+			.gallery-info .project-title {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1rem;
+				letter-spacing: 1px;
+				color: #111111;
+				margin: 0 0 5px 0;
+			}
+
+			.gallery-info .project-desc {
+				font-family: 'NanumHuman', sans-serif;
+				font-size: 0.85rem;
+				color: #777777;
+				margin: 0;
+			}
+
+			/* 📱 모바일 화면 대응 (폭 736px 이하에서는 1열 또는 2열로 자동 변경) */
 			@media screen and (max-width: 736px) {
 				.page-container {
-					padding: 30px 20px;
+					padding: 20px 15px 50px 15px;
 				}
 				.page-title {
 					font-size: 1.4rem;
+					margin-bottom: 25px;
 				}
-				.page-content {
-					font-size: 0.9rem;
+				.gallery-grid {
+					grid-template-columns: repeat(1, 1fr); /* 모바일에서는 1열로 시원하게 배치 */
+					gap: 25px;
 				}
 			}
 		</style>
@@ -86,7 +135,7 @@
 	<body class="is-preload">
 		<div id="page-wrapper">
 			
-			<!-- Header: 대문자 파일명에 맞춰 링크 수정 완료 -->
+			<!-- Header -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
@@ -98,13 +147,57 @@
 				</nav>
 			</section>
 
-			<!-- 건축 아카이브 본문 영역 -->
+			<!-- 건축 아카이브 3열 갤러리 영역 -->
 			<div class="page-container">
 				<h2 class="page-title">Architecture</h2>
-				<div class="page-content">
-					<!-- 💡 이곳에 스케치업 모델링, 상세도면, 건축 관련 작업물들을 앞으로 채워나가시면 됩니다! -->
-					<p>공사중</p>
-					<p>404</p>
+				
+				<div class="gallery-grid">
+					
+					<!-- 첫 번째 작품 카드 -->
+					<a href="project1.html" class="gallery-item">
+						<div class="gallery-img-box">
+							<!-- 💡 대표 이미지 경로를 넣어주세요 -->
+							<img src="images/lego.png" alt="Project 1" />
+						</div>
+						<div class="gallery-info">
+							<h3 class="project-title">PROJECT TITLE 01</h3>
+							<p class="project-desc">Elevator Safety Agency HQ</p>
+						</div>
+					</a>
+
+					<!-- 두 번째 작품 카드 -->
+					<a href="project2.html" class="gallery-item">
+						<div class="gallery-img-box">
+							<img src="images/lego.png" alt="Project 2" />
+						</div>
+						<div class="gallery-info">
+							<h3 class="project-title">PROJECT TITLE 02</h3>
+							<p class="project-desc">Facade Louver Study</p>
+						</div>
+					</a>
+
+					<!-- 세 번째 작품 카드 -->
+					<a href="project3.html" class="gallery-item">
+						<div class="gallery-img-box">
+							<img src="images/lego.png" alt="Project 3" />
+						</div>
+						<div class="gallery-info">
+							<h3 class="project-title">PROJECT TITLE 03</h3>
+							<p class="project-desc">Glass Curtain Wall Concept</p>
+						</div>
+					</a>
+
+					<!-- 네 번째 작품 카드 (필요하면 계속 복사해서 아래로 추가 가능합니다!) -->
+					<a href="project4.html" class="gallery-item">
+						<div class="gallery-img-box">
+							<img src="images/lego.png" alt="Project 4" />
+						</div>
+						<div class="gallery-info">
+							<h3 class="project-title">PROJECT TITLE 04</h3>
+							<p class="project-desc">Building Massing Study</p>
+						</div>
+					</a>
+
 				</div>
 			</div>
 
