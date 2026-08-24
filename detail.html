@@ -150,9 +150,9 @@
 				<h2 id="p-title" class="detail-title">Project Title</h2>
 				<p id="p-subtitle" class="detail-subtitle">Project Subtitle & Concept</p>
 
-				<!-- 상세 대표 이미지 -->
+				<!-- 상세 대표 이미지 (자바스크립트에 의해 ID별로 자동 변경됨) -->
 				<div class="detail-img-box">
-					<img src="images/uam masterplan.jpg" alt="UAM Masterplan Detail Image" />
+					<img id="p-img" src="" alt="Project Detail Image" />
 				</div>
 
 				<!-- 상세 설명 텍스트 -->
@@ -167,28 +167,31 @@
 
 		</div>
 
-		<!-- 자바스크립트: 주소창 뒤의 id 신호를 읽어서 글자를 바꿔주는 코드 -->
+		<!-- 자바스크립트: ID별 데이터 및 이미지 자동 매칭 시스템 -->
 		<script>
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 각 ID별 프로젝트 맞춤형 데이터 (2번에 UAM 마스터플랜 등록 완료)
+			// 📌 각 프로젝트별 이미지와 텍스트 데이터 세팅
 			const projectData = {
 				"1": { 
 					title: "thisconnect museum", 
 					subtitle: "This connect Museum", 
+					img: "images/2-2 perspective.jpg",
 					desc1: "404 not found", 
 					desc2: "404 not found" 
 				},
 				"2": { 
 					title: "UAM Masterplan", 
 					subtitle: "Urban Air Mobility Architecture", 
+					img: "images/uam masterplan.jpg", // 👈 UAM 마스터플랜 이미지 정확히 연동
 					desc1: "도심항공교통(UAM) 인프라를 위한 복합 환승 센터 및 마스터플랜 디자인입니다.", 
 					desc2: "미래 교통 체계와 도시 공간의 결합을 스케치업 모델링으로 구체화하였습니다." 
 				},
 				"3": { 
 					title: "nontitle", 
 					subtitle: "2023", 
+					img: "images/lego.png",
 					desc1: "설명이 들어갈 자리입니다.", 
 					desc2: "추가 상세 설명입니다." 
 				}
@@ -197,6 +200,7 @@
 			if (projectData[idNum]) {
 				document.getElementById('p-title').innerText = projectData[idNum].title;
 				document.getElementById('p-subtitle').innerText = projectData[idNum].subtitle;
+				document.getElementById('p-img').src = projectData[idNum].img; // 이미지 자동 교체
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
 			} else {
