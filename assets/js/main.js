@@ -62,3 +62,15 @@
 				});
 
 })(jQuery);
+// 🪄 메뉴바 아이콘을 red.jpg로 일괄 변경
+$(document).ready(function() {
+    const $navUl = $('#header #nav > ul');
+    if ($navUl.length) {
+        $navUl.html(`
+            <li><a href="index.html"><img src="images/red.jpg" alt="Home" /></a></li>
+            <li><a href="profile.html"><img src="images/red.jpg" alt="Profile" /></a></li>
+            <li><a href="Architecture.html"><img src="images/red.jpg" alt="Architecture" /></a></li>
+            <li><a href="Artwork.html"><img src="images/red.jpg" alt="Artwork" /></a></li>
+        `);
+    }
+});
