@@ -135,7 +135,7 @@
 	<body class="is-preload">
 		<div id="page-wrapper">
 			
-			<!-- Header (대문자 파일명 링크 적용) -->
+			<!-- Header -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
@@ -147,86 +147,46 @@
 				</nav>
 			</section>
 
-			<!-- 건축 아카이브 3열 5줄 갤러리 영역 -->
+			<!-- 건축 아카이브 갤러리 영역 -->
 			<div class="page-container">
 				<h2 class="page-title">Architecture</h2>
-				
-				<div class="gallery-grid">
-					
-					<!-- 1행 -->
-					<a href="detail.html?id=1" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 1" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 01</h3><p class="project-desc">Elevator Safety Agency HQ</p></div>
-					</a>
-					<a href="detail.html?id=2" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 2" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 02</h3><p class="project-desc">Facade Louver Study</p></div>
-					</a>
-					<a href="detail.html?id=3" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 3" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 03</h3><p class="project-desc">Glass Curtain Wall Concept</p></div>
-					</a>
-
-					<!-- 2행 -->
-					<a href="detail.html?id=4" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 4" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 04</h3><p class="project-desc">Building Massing Study</p></div>
-					</a>
-					<a href="detail.html?id=5" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 5" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 05</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=6" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 6" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 06</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-
-					<!-- 3행 -->
-					<a href="detail.html?id=7" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 7" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 07</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=8" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 8" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 08</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=9" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 9" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 09</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-
-					<!-- 4행 -->
-					<a href="detail.html?id=10" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 10" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 10</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=11" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 11" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 11</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=12" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 12" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 12</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-
-					<!-- 5행 -->
-					<a href="detail.html?id=13" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 13" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 13</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=14" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 14" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 14</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-					<a href="detail.html?id=15" class="gallery-item">
-						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 15" /></div>
-						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 15</h3><p class="project-desc">Project Description Here</p></div>
-					</a>
-
+				<div class="gallery-grid" id="gallery-container">
+					<!-- 자바스크립트에 의해 카드가 자동으로 생성됩니다. -->
 				</div>
 			</div>
 
 		</div>
+
+		<!-- 🪄 자바스크립트 자동 생성 및 정렬 시스템 -->
+		<script>
+			// 📌 새로운 작업물을 추가하고 싶을 때 이 목록의 맨 위에 줄을 추가하세요!
+			const projects = [
+				{ id: 3, title: "PROJECT TITLE 03", desc: "Glass Curtain Wall Concept", img: "images/lego.png" },
+				{ id: 2, title: "PROJECT TITLE 02", desc: "Facade Louver Study", img: "images/lego.png" },
+				{ id: 1, title: "Elevator Safety Agency HQ", desc: "3D Modeling & Massing Design Study", img: "images/lego.png" }
+			];
+
+			const container = document.getElementById('gallery-container');
+
+			// 데이터를 역순으로 돌려서 최신 작성된 항목이 맨 앞으로 오도록 자동 정렬
+			projects.forEach(project => {
+				const item = document.createElement('a');
+				item.href = `detail.html?id=${project.id}`;
+				item.className = 'gallery-item';
+				
+				item.innerHTML = `
+					<div class="gallery-img-box">
+						<img src="${project.img}" alt="${project.title}" />
+					</div>
+					<div class="gallery-info">
+						<h3 class="project-title">${project.title}</h3>
+						<p class="project-desc">${project.desc}</p>
+					</div>
+				`;
+				
+				container.appendChild(item);
+			});
+		</script>
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
