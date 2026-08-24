@@ -68,34 +68,27 @@
 				gap: 30px;
 			}
 
-			/* 🎨 개별 작품 카드 및 오버레이 호버 효과 스타일 */
+			/* 🎨 개별 작품 카드 스타일 (모든 썸네일을 1:1 정사각형으로 고정) */
 			.gallery-item {
 				position: relative;
 				display: block;
 				text-decoration: none;
 				background: #ffffff;
 				overflow: hidden;
-				aspect-ratio: 4 / 3; /* 네모 썸네일 틀 비율 고정 */
+				aspect-ratio: 1 / 1; /* 💡 1:1 정사각형 비율 강제 고정 */
 			}
 
-			/* 💡 이미지 박스 (네모 틀 유지 및 도면이 잘리지 않도록 여백/정렬 적용) */
+			/* 이미지 박스 */
 			.gallery-img-box {
 				width: 100%;
 				height: 100%;
-				background-color: #ffffff; /* 여백 공간은 깔끔한 흰색으로 채움 */
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding: 12px; /* 이미지가 박스에 꽉 차지 않고 여유 있게 보이도록 패딩 설정 */
-				box-sizing: border-box;
 			}
 
 			.gallery-img-box img {
-				max-width: 100%;
-				max-height: 100%;
-				width: auto;
-				height: auto;
-				object-fit: contain; /* 이미지가 잘리지 않고 전체가 들어오도록 설정 */
+				width: 100%;
+				height: 100%;
+				object-fit: cover; /* 1:1 정사각형 틀에 이미지 중앙을 기준으로 꽉 채움 */
+				object-position: center;
 				display: block;
 			}
 
@@ -141,7 +134,7 @@
 				margin: 0;
 			}
 
-			/* 📱 모바일 화면 대응 (사진 크기를 더 아담하게 55%로 축소) */
+			/* 📱 모바일 화면 대응 */
 			@media screen and (max-width: 736px) {
 				.page-container {
 					padding: 20px 15px 50px 15px;
