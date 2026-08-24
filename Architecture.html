@@ -68,27 +68,34 @@
 				gap: 30px;
 			}
 
-			/* 🎨 개별 작품 카드 스타일 (모든 썸네일을 1:1 정사각형으로 고정) */
+			/* 🎨 개별 작품 카드 스타일 (1:1 정사각형 틀 고정) */
 			.gallery-item {
 				position: relative;
 				display: block;
 				text-decoration: none;
 				background: #ffffff;
 				overflow: hidden;
-				aspect-ratio: 1 / 1; /* 💡 1:1 정사각형 비율 강제 고정 */
+				aspect-ratio: 1 / 1;
 			}
 
-			/* 이미지 박스 */
+			/* 💡 이미지 박스 (여백을 주어 이미지가 아담하게 보이도록 조절) */
 			.gallery-img-box {
 				width: 100%;
 				height: 100%;
+				background-color: #ffffff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 25px;
+				box-sizing: border-box;
 			}
 
 			.gallery-img-box img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover; /* 1:1 정사각형 틀에 이미지 중앙을 기준으로 꽉 채움 */
-				object-position: center;
+				max-width: 100%;
+				max-height: 100%;
+				width: auto;
+				height: auto;
+				object-fit: contain;
 				display: block;
 			}
 
@@ -185,7 +192,7 @@
 		<script>
 			const projects = [
 				{ id: 3, title: "nontitle", desc: "2023", img: "images/lego.png" },
-				{ id: 2, title: "UAM Masterplan", desc: "2024", img: "images/uam masterplan.jpg" },
+				{ id: 2, title: "UAM Masterplan", desc: "2024", img: "images/uam sum.jpg" }, // 👈 썸네일 전용 이미지 적용 완료!
 				{ id: 1, title: "thisconnect museum", desc: "2022", img: "images/2-2 perspective.jpg" }
 			];
 
