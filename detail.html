@@ -150,9 +150,9 @@
 				<h2 id="p-title" class="detail-title">Project Title</h2>
 				<p id="p-subtitle" class="detail-subtitle">Project Subtitle & Concept</p>
 
-				<!-- 상세 대표 이미지 -->
+				<!-- 상세 대표 이미지 (2-2 perspective.jpg로 교체 완료) -->
 				<div class="detail-img-box">
-					<img src="images/lego.png" alt="Project Detail Image" />
+					<img src="images/2-2 perspective.jpg" alt="Project Detail Image" />
 				</div>
 
 				<!-- 상세 설명 텍스트 -->
@@ -172,13 +172,13 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 Architecture.html에 적어둔 id 번호와 똑같이 내용을 관리하세요!
+			// 📌 1번 프로젝트에 맞춤형 내용 세팅 완료
 			const projectData = {
 				"1": { 
-					title: "Elevator Safety Agency HQ", 
-					subtitle: "3D Modeling & Massing Design Study", 
-					desc1: "승강기안전공단 청사 건물 3D 모델링 및 매싱 디자인 제안 작업입니다.", 
-					desc2: "파사드 루버와 글래스 커튼월의 조화를 중점적으로 스터디했습니다." 
+					title: "2023, 
+					subtitle: "This connect Museum", 
+					desc1: "404 not found", 
+					desc2: "404 not found" 
 				},
 				"2": { 
 					title: "PROJECT TITLE 02", 
@@ -192,7 +192,6 @@
 					desc1: "현대적인 오피스 건물의 투명성과 구조미를 강조한 커튼월 디자인입니다.", 
 					desc2: "고층부와 저저층부의 재료적 대비를 탐구했습니다." 
 				}
-				// 💡 앞으로 새로운 프로젝트(예: id: 4)를 추가하면 여기에 똑같이 한 줄씩 적어주시면 됩니다!
 			};
 
 			if (projectData[idNum]) {
@@ -213,3 +212,5 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+	</body>
+</html>
