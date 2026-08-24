@@ -133,21 +133,26 @@
 				margin: 0;
 			}
 
-			/* 모바일 화면 대응 */
+			/* 📱 모바일 화면 대응 (사진 크기 컴팩트하게 줄이고 가운데 정렬) */
 			@media screen and (max-width: 736px) {
 				.page-container {
 					padding: 20px 15px 50px 15px;
 				}
 				.page-title {
-					font-size: 1.4rem;
-					margin-bottom: 25px;
+					font-size: 1.3rem;
+					margin-bottom: 20px;
+					padding-left: 10px;
 				}
 				.gallery-grid {
 					grid-template-columns: repeat(1, 1fr);
-					gap: 25px;
+					gap: 35px;
 				}
-				/* 모바일은 마우스 호버가 없으므로 터치했을 때나 항상 보이게 처리하려면 아래 주석 해제 가능 */
-				/* .overlay-text-box { opacity: 1; background-color: rgba(255,255,255,0.7); } */
+				/* 💡 모바일에서 사진 크기를 화면의 75%로 줄이고 중앙에 배치 */
+				.gallery-item {
+					max-width: 75%;
+					margin: 0 auto;
+					width: 100%;
+				}
 			}
 		</style>
 	</head>
