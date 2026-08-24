@@ -183,10 +183,10 @@
 
 		<!-- 🪄 자바스크립트 자동 생성 및 정렬 시스템 (오버레이 구조 반영) -->
 		<script>
-			// 📌 새로운 작업물을 추가하고 싶을 때 이 목록의 맨 위에 줄을 추가하세요!
+			// 📌 프로젝트 목록 (2번 파일명과 제목을 정확히 맞춤)
 			const projects = [
 				{ id: 3, title: "nontitle", desc: "2023", img: "images/lego.png" },
-				{ id: 2, title: "XYZ", desc: "2023", img: "images/uam masterplan.png" },
+				{ id: 2, title: "UAM Masterplan", desc: "2024", img: "images/uam masterplan.jpg" },
 				{ id: 1, title: "thisconnect museum", desc: "2022", img: "images/2-2 perspective.jpg" }
 			];
 
@@ -198,7 +198,7 @@
 				item.href = `detail.html?id=${project.id}`;
 				item.className = 'gallery-item';
 				
-				// 💡 자바스크립트가 카드를 만들 때 오버레이 박스가 같이 생성되도록 수정됨
+				// 💡 자바스크립트가 카드를 만들 때 오버레이 박스가 같이 생성됨
 				item.innerHTML = `
 					<div class="gallery-img-box">
 						<img src="${project.img}" alt="${project.title}" />
