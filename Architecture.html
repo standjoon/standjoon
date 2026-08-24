@@ -83,7 +83,7 @@
 			/* 이미지 박스 */
 			.gallery-img-box {
 				width: 100%;
-				aspect-ratio: 4 / 3; /* 이미지 비율 고정 (원하시면 수정 가능) */
+				aspect-ratio: 4 / 3; /* 이미지 비율 고정 */
 				overflow: hidden;
 				background-color: #f0f0f0;
 				margin-bottom: 12px;
@@ -116,7 +116,7 @@
 				margin: 0;
 			}
 
-			/* 📱 모바일 화면 대응 (폭 736px 이하에서는 1열 또는 2열로 자동 변경) */
+			/* 📱 모바일 화면 대응 */
 			@media screen and (max-width: 736px) {
 				.page-container {
 					padding: 20px 15px 50px 15px;
@@ -126,7 +126,7 @@
 					margin-bottom: 25px;
 				}
 				.gallery-grid {
-					grid-template-columns: repeat(1, 1fr); /* 모바일에서는 1열로 시원하게 배치 */
+					grid-template-columns: repeat(1, 1fr); /* 모바일에서는 1열로 배치 */
 					gap: 25px;
 				}
 			}
@@ -147,55 +147,80 @@
 				</nav>
 			</section>
 
-			<!-- 건축 아카이브 3열 갤러리 영역 -->
+			<!-- 건축 아카이브 3열 5줄(15개 칸) 갤러리 영역 -->
 			<div class="page-container">
 				<h2 class="page-title">Architecture</h2>
 				
 				<div class="gallery-grid">
 					
-					<!-- 첫 번째 작품 카드 -->
+					<!-- 1행 -->
 					<a href="project1.html" class="gallery-item">
-						<div class="gallery-img-box">
-							<!-- 💡 대표 이미지 경로를 넣어주세요 -->
-							<img src="images/lego.png" alt="Project 1" />
-						</div>
-						<div class="gallery-info">
-							<h3 class="project-title">PROJECT TITLE 01</h3>
-							<p class="project-desc">Elevator Safety Agency HQ</p>
-						</div>
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 1" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 01</h3><p class="project-desc">Elevator Safety Agency HQ</p></div>
 					</a>
-
-					<!-- 두 번째 작품 카드 -->
 					<a href="project2.html" class="gallery-item">
-						<div class="gallery-img-box">
-							<img src="images/lego.png" alt="Project 2" />
-						</div>
-						<div class="gallery-info">
-							<h3 class="project-title">PROJECT TITLE 02</h3>
-							<p class="project-desc">Facade Louver Study</p>
-						</div>
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 2" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 02</h3><p class="project-desc">Facade Louver Study</p></div>
 					</a>
-
-					<!-- 세 번째 작품 카드 -->
 					<a href="project3.html" class="gallery-item">
-						<div class="gallery-img-box">
-							<img src="images/lego.png" alt="Project 3" />
-						</div>
-						<div class="gallery-info">
-							<h3 class="project-title">PROJECT TITLE 03</h3>
-							<p class="project-desc">Glass Curtain Wall Concept</p>
-						</div>
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 3" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 03</h3><p class="project-desc">Glass Curtain Wall Concept</p></div>
 					</a>
 
-					<!-- 네 번째 작품 카드 (필요하면 계속 복사해서 아래로 추가 가능합니다!) -->
+					<!-- 2행 -->
 					<a href="project4.html" class="gallery-item">
-						<div class="gallery-img-box">
-							<img src="images/lego.png" alt="Project 4" />
-						</div>
-						<div class="gallery-info">
-							<h3 class="project-title">PROJECT TITLE 04</h3>
-							<p class="project-desc">Building Massing Study</p>
-						</div>
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 4" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 04</h3><p class="project-desc">Building Massing Study</p></div>
+					</a>
+					<a href="project5.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 5" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 05</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project6.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 6" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 06</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+
+					<!-- 3행 -->
+					<a href="project7.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 7" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 07</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project8.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 8" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 08</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project9.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 9" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 09</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+
+					<!-- 4행 -->
+					<a href="project10.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 10" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 10</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project11.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 11" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 11</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project12.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 12" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 12</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+
+					<!-- 5행 -->
+					<a href="project13.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 13" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 13</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project14.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 14" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 14</h3><p class="project-desc">Project Description Here</p></div>
+					</a>
+					<a href="project15.html" class="gallery-item">
+						<div class="gallery-img-box"><img src="images/lego.png" alt="Project 15" /></div>
+						<div class="gallery-info"><h3 class="project-title">PROJECT TITLE 15</h3><p class="project-desc">Project Description Here</p></div>
 					</a>
 
 				</div>
