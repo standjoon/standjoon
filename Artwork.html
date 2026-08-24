@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>standjoon - artwork</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
+		<style>
+			body { 
+				font-family: 'Oswald', 'NanumHuman', sans-serif !important; 
+				background-color: #ffffff !important; 
+			}
+			#page-wrapper { 
+				background-color: #ffffff !important; 
+			}
+			
+			/* 상단 여백 조정 */
+			#header {
+				padding-top: 3em !important;
+				padding-bottom: 2em !important;
+			}
+			
+			/* 푸터/기타 영역 숨김 */
+			#footer, .wrapper { 
+				display: none !important; 
+			}
+
+			/* 메뉴 선택된 곳의 빨간색 배경 제거 및 깔끔한 텍스트화 */
+			#nav > ul > li.current > a, 
+			#nav > ul > li:hover > a {
+				background: transparent !important; 
+				color: #111111 !important;          
+				box-shadow: none !important;        
+			}
+			
+			#nav > ul > li > a {
+				color: #555555 !important;
+				background: transparent !important;
+			}
+
+			/* 본문 영역 컨테이너 */
+			.page-container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 60px 20px;
+				box-sizing: border-box;
+			}
+
+			/* 페이지 타이틀 스타일 */
+			.page-title {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1.8rem;
+				letter-spacing: 2px;
+				color: #111111;
+				text-transform: uppercase;
+				margin-bottom: 30px;
+				text-align: left;
+			}
+
+			/* 본문 텍스트 스타일 */
+			.page-content {
+				font-family: 'NanumHuman', sans-serif;
+				font-size: 1rem;
+				color: #555555;
+				line-height: 1.8;
+			}
+
+			/* 📱 모바일 화면 대응 */
+			@media screen and (max-width: 736px) {
+				.page-container {
+					padding: 30px 20px;
+				}
+				.page-title {
+					font-size: 1.4rem;
+				}
+				.page-content {
+					font-size: 0.9rem;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+			
+			<!-- Header: 4개의 카테고리 메뉴 구성 (Artwork에 current 적용) -->
+			<section id="header">
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="architecture.html">Architecture</a></li>
+						<li class="current"><a href="artwork.html">Artwork</a></li>
+					</ul>
+				</nav>
+			</section>
+
+			<!-- 아트워크 본문 영역 -->
+			<div class="page-container">
+				<h2 class="page-title">Artwork</h2>
+				<div class="page-content">
+					<!-- 💡 이곳에 인스타툰, 이모티콘 등 창작 작업물들을 앞으로 채워나가시면 됩니다! -->
+					<p>시각적인 상상력과 일상의 기록을 담는 공간입니다.</p>
+					<p>인스타툰, 이모티콘 및 다양한 아트워크 작업물을 아카이브합니다.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
