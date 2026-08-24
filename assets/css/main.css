@@ -2906,3 +2906,10 @@ input, select, textarea {
 			}
 
 	}
+/* 📱 모든 페이지의 모바일 메뉴판 흰 배경 + 검은 글씨 강제 고정 */
+#navPanel {
+    background-color: #ffffff !important;
+}
+#navPanel a {
+    color: #111111 !important;
+}
