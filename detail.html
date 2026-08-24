@@ -172,10 +172,27 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
+			// 📌 Architecture.html에 적어둔 id 번호와 똑같이 내용을 관리하세요!
 			const projectData = {
-				"1": { title: "Elevator Safety Agency HQ", subtitle: "3D Modeling & Massing Design Study", desc1: "승강기안전공단 청사 건물 3D 모델링 및 매싱 디자인 제안 작업입니다.", desc2: "파사드 루버와 글래스 커튼월의 조화를 중점적으로 스터디했습니다." },
-				"2": { title: "Facade Louver Study", subtitle: "Exterior Skin Detail Study", desc1: "건물 외피의 디테일과 일조 조절을 위한 루버 시스템 연구입니다.", desc2: "다양한 각도의 차양 효과를 스케치업으로 시뮬레이션하였습니다." },
-				"3": { title: "Glass Curtain Wall Concept", subtitle: "Modern Commercial Office Design", desc1: "현대적인 오피스 건물의 투명성과 구조미를 강조한 커튼월 디자인입니다.", desc2: "고층부와 저저층부의 재료적 대비를 탐구했습니다." }
+				"1": { 
+					title: "Elevator Safety Agency HQ", 
+					subtitle: "3D Modeling & Massing Design Study", 
+					desc1: "승강기안전공단 청사 건물 3D 모델링 및 매싱 디자인 제안 작업입니다.", 
+					desc2: "파사드 루버와 글래스 커튼월의 조화를 중점적으로 스터디했습니다." 
+				},
+				"2": { 
+					title: "PROJECT TITLE 02", 
+					subtitle: "Facade Louver Study", 
+					desc1: "건물 외피의 디테일과 일조 조절을 위한 루버 시스템 연구입니다.", 
+					desc2: "다양한 각도의 차양 효과를 스케치업으로 시뮬레이션하였습니다." 
+				},
+				"3": { 
+					title: "PROJECT TITLE 03", 
+					subtitle: "Glass Curtain Wall Concept", 
+					desc1: "현대적인 오피스 건물의 투명성과 구조미를 강조한 커튼월 디자인입니다.", 
+					desc2: "고층부와 저저층부의 재료적 대비를 탐구했습니다." 
+				}
+				// 💡 앞으로 새로운 프로젝트(예: id: 4)를 추가하면 여기에 똑같이 한 줄씩 적어주시면 됩니다!
 			};
 
 			if (projectData[idNum]) {
@@ -184,7 +201,7 @@
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
 			} else {
-				document.getElementById('p-title').innerText = "PROJECT TITLE 0" + idNum;
+				document.getElementById('p-title').innerText = "PROJECT TITLE " + idNum;
 				document.getElementById('p-subtitle').innerText = "Architecture & Space Archive";
 			}
 		</script>
@@ -196,5 +213,3 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-	</body>
-</html>
