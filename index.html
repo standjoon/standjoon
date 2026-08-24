@@ -29,17 +29,18 @@
 				display: none !important; 
 			}
 
-			/* 메뉴 선택된 곳의 빨간색 배경 제거 및 깔끔한 텍스트화 */
+			/* 💡 상단 메뉴 글자색을 명확한 어두운 색상으로 강제 고정 */
+			#nav > ul > li > a {
+				color: #333333 !important;
+				background: transparent !important;
+			}
+
+			/* 메뉴 선택되거나 마우스 올렸을 때도 깔끔하게 유지 */
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
 				color: #111111 !important;          
 				box-shadow: none !important;        
-			}
-			
-			#nav > ul > li > a {
-				color: #555555 !important;
-				background: transparent !important;
 			}
 
 			/* 중앙 이미지 및 텍스트 정렬 (PC 기준 250px 아래로 내림) */
