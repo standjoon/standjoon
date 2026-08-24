@@ -176,13 +176,14 @@
 
 		</div>
 
-		<!-- 🐢 오직 Artwork 페이지에서만 마우스를 따라다니는 거북이 스크립트 -->
-		<div id="following-turtle" style="position: fixed; z-index: 999999; pointer-events: none; font-size: 26px; transition: transform 0.2s ease-out; display: none;">
+		<!-- 🐢 마우스를 따라다니는 거북이 요소 -->
+		<div id="following-turtle" style="position: fixed; left: 100px; top: 100px; z-index: 999999; pointer-events: none; font-size: 32px; transition: transform 0.2s ease-out;">
 			🐢
 		</div>
 
+		<!-- 🪄 자바스크립트 자동 생성 및 거북이 추적 시스템 -->
 		<script>
-			// 📌 아트워크 작업물 목록 (인스타툰, 이모티콘 등 여기에 추가하세요!)
+			// 📌 아트워크 작업물 목록
 			const projects = [
 				{ id: 2, title: "Instatoon Example", desc: "2024", img: "images/lego.png" },
 				{ id: 1, title: "Emoticon Design", desc: "2024", img: "images/2-2 perspective.jpg" }
@@ -214,19 +215,6 @@
 			let mouseY = window.innerHeight / 2;
 			let turtleX = mouseX;
 			let turtleY = mouseY;
-			let isInside = false;
-
-			// 아트워크 페이지 화면 안으로 마우스가 들어오면 거북이 등장
-			window.addEventListener('mouseenter', () => {
-				turtle.style.display = 'block';
-				isInside = true;
-			});
-
-			// 마우스가 브라우저 바깥으로 나가면 숨김
-			window.addEventListener('mouseleave', () => {
-				turtle.style.display = 'none';
-				isInside = false;
-			});
 
 			window.addEventListener('mousemove', (e) => {
 				mouseX = e.clientX;
@@ -234,22 +222,21 @@
 			});
 
 			function animateTurtle() {
-				if (isInside) {
-					let distX = mouseX - turtleX;
-					let distY = mouseY - turtleY;
-					
-					turtleX += distX * 0.03; // 거북이의 느릿느릿한 속도
-					turtleY += distY * 0.03;
+				let distX = mouseX - turtleX;
+				let distY = mouseY - turtleY;
+				
+				turtleX += distX * 0.04; // 거북이 이동 속도
+				turtleY += distY * 0.04;
 
-					turtle.style.left = (turtleX + 20) + 'px';
-					turtle.style.top = (turtleY + 20) + 'px';
+				turtle.style.left = turtleX + 'px';
+				turtle.style.top = turtleY + 'px';
 
-					if (distX > 1) {
-						turtle.style.transform = 'scaleX(1)';
-					} else if (distX < -1) {
-						turtle.style.transform = 'scaleX(-1)';
-					}
+				if (distX > 1) {
+					turtle.style.transform = 'scaleX(1)';
+				} else if (distX < -1) {
+					turtle.style.transform = 'scaleX(-1)';
 				}
+
 				requestAnimationFrame(animateTurtle);
 			}
 
