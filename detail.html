@@ -150,9 +150,9 @@
 				<h2 id="p-title" class="detail-title">Project Title</h2>
 				<p id="p-subtitle" class="detail-subtitle">Project Subtitle & Concept</p>
 
-				<!-- 상세 대표 이미지 (2-2 perspective.jpg로 교체 완료) -->
+				<!-- 상세 대표 이미지 -->
 				<div class="detail-img-box">
-					<img src="images/2-2 perspective.jpg" alt="Project Detail Image" />
+					<img src="images/uam masterplan.jpg" alt="UAM Masterplan Detail Image" />
 				</div>
 
 				<!-- 상세 설명 텍스트 -->
@@ -172,25 +172,25 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 1번 프로젝트에 맞춤형 내용 세팅 완료
+			// 📌 각 ID별 프로젝트 맞춤형 데이터 (2번에 UAM 마스터플랜 등록 완료)
 			const projectData = {
 				"1": { 
-					title: "2023, 
+					title: "thisconnect museum", 
 					subtitle: "This connect Museum", 
 					desc1: "404 not found", 
 					desc2: "404 not found" 
 				},
 				"2": { 
-					title: "PROJECT TITLE 02", 
-					subtitle: "Facade Louver Study", 
-					desc1: "건물 외피의 디테일과 일조 조절을 위한 루버 시스템 연구입니다.", 
-					desc2: "다양한 각도의 차양 효과를 스케치업으로 시뮬레이션하였습니다." 
+					title: "UAM Masterplan", 
+					subtitle: "Urban Air Mobility Architecture", 
+					desc1: "도심항공교통(UAM) 인프라를 위한 복합 환승 센터 및 마스터플랜 디자인입니다.", 
+					desc2: "미래 교통 체계와 도시 공간의 결합을 스케치업 모델링으로 구체화하였습니다." 
 				},
 				"3": { 
-					title: "PROJECT TITLE 03", 
-					subtitle: "Glass Curtain Wall Concept", 
-					desc1: "현대적인 오피스 건물의 투명성과 구조미를 강조한 커튼월 디자인입니다.", 
-					desc2: "고층부와 저저층부의 재료적 대비를 탐구했습니다." 
+					title: "nontitle", 
+					subtitle: "2023", 
+					desc1: "설명이 들어갈 자리입니다.", 
+					desc2: "추가 상세 설명입니다." 
 				}
 			};
 
