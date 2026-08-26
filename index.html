@@ -107,6 +107,40 @@
 				margin: 0;
 			}
 
+			/* 📱 모바일 상단 햄버거 메뉴 버튼을 커스텀 이미지로 변경 */
+			#titleBar .toggle {
+				background-image: url('images/red.png') !important; /* 👈 'images/원하는이미지이름.png' 경로로 변경하세요 */
+				background-size: 40% auto !important;
+				background-repeat: no-repeat !important;
+				background-position: center !important;
+				background-color: transparent !important; /* 회색 박스 배경을 없애려면 transparent */
+				text-indent: -9999px !important;
+			}
+
+			/* 📱 모바일 메뉴(사이드 패널) 디자인 개선 */
+			#navPanel {
+				background-color: #ffffff !important;
+				box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05) !important;
+				padding: 30px 20px !important;
+			}
+
+			#navPanel a {
+				font-family: 'Oswald', 'NanumHuman', sans-serif !important;
+				font-size: 1.1rem !important;
+				letter-spacing: 1.5px !important;
+				color: #444444 !important;
+				text-transform: uppercase !important;
+				padding: 12px 10px !important;
+				border-bottom: 1px solid #f0f0f0 !important;
+				display: block !important;
+				transition: color 0.2s ease !important;
+			}
+
+			#navPanel a:hover {
+				color: #111111 !important;
+				background: transparent !important;
+			}
+
 			/* 📱 모바일 화면(폭 736px 이하)에서 크기 조절 (모바일은 margin-top을 초기화해서 영향 안 받게 함) */
 			@media screen and (max-width: 736px) {
 				.center-image-container {
