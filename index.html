@@ -107,15 +107,22 @@
 				margin: 0;
 			}
 
-			/* 📱 모바일 상단 햄버거 메뉴 버튼을 회색 박스 없이 이미지로만 깔끔하게 변경 */
+			/* 📱 회색 박스/테두리를 완전히 없애고 이미지만 남기는 설정 */
 			#titleBar .toggle {
-				background: transparent !important;
+				background: none !important;
 				background-image: url('images/red.png') !important;
-				background-size: 40% auto !important;
+				background-size: contain !important;
 				background-repeat: no-repeat !important;
 				background-position: center !important;
-				text-indent: -9999px !important;
+				width: 40px !important;
+				height: 40px !important;
+				padding: 0 !important;
 				box-shadow: none !important;
+				border: none !important;
+				text-indent: -9999px !important;
+				position: absolute !important;
+				top: 15px !important;
+				left: 15px !important;
 			}
 
 			/* 📱 모바일 메뉴(사이드 패널) 디자인 개선 */
