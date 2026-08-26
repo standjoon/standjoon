@@ -107,22 +107,28 @@
 				margin: 0;
 			}
 
-			/* 📱 회색 박스/테두리를 완전히 없애고 이미지만 남기는 설정 */
-			#titleBar .toggle {
+			/* 📱 회색 박스 및 내부 가상 요소 잔해를 100% 박멸하고 투명 PNG만 띄우는 설정 */
+			#titleBar .toggle,
+			#titleBar .toggle::before,
+			#titleBar .toggle::after {
 				background: none !important;
-				background-image: url('images/red.png') !important;
+				background-color: transparent !important;
+				box-shadow: none !important;
+				border: none !important;
+			}
+
+			#titleBar .toggle {
+				background-image: url('images/red.png') !important; /* 본인 PNG 파일명 확인 */
 				background-size: contain !important;
 				background-repeat: no-repeat !important;
 				background-position: center !important;
-				width: 40px !important;
-				height: 40px !important;
+				width: 44px !important;
+				height: 44px !important;
 				padding: 0 !important;
-				box-shadow: none !important;
-				border: none !important;
 				text-indent: -9999px !important;
 				position: absolute !important;
-				top: 15px !important;
-				left: 15px !important;
+				top: 12px !important;
+				left: 12px !important;
 			}
 
 			/* 📱 모바일 메뉴(사이드 패널) 디자인 개선 */
