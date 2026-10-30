@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
 			body { 
@@ -33,7 +33,7 @@
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
-				color: #111111 !important;          
+				color: #111111 !important;         
 				box-shadow: none !important;        
 			}
 			
@@ -141,10 +141,106 @@
 				margin: 0;
 			}
 
+			/* 템플릿 기본 사이드바 숨김 */
+			#navPanel, #titleBar {
+				display: none !important;
+			}
+
+			/* 모바일 전용 커스텀 햄버거 버튼 (레고 PNG 아이콘) */
+			.custom-mobile-btn {
+				display: none;
+				position: fixed;
+				top: 15px;
+				left: 15px;
+				width: 44px;
+				height: 44px;
+				background-image: url('images/red.png');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+				z-index: 10005;
+				text-indent: -9999px;
+			}
+
+			/* 모바일 풀스크린 오버레이 메뉴 기본 상태 (숨김) */
+			.mobile-overlay {
+				display: none; 
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: rgba(255, 255, 255, 0.85);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				z-index: 99999;
+				justify-content: center;
+				align-items: center;
+			}
+
+			/* 자바스크립트로 제어할 클래스 */
+			.mobile-overlay.is-visible {
+				display: flex !important;
+			}
+
+			.mobile-menu-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+			}
+
+			.mobile-menu-list li {
+				margin: 22px 0;
+			}
+
+			.mobile-menu-list li a {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				letter-spacing: 2.5px;
+				color: #222222;
+				text-transform: uppercase;
+				text-decoration: none;
+				background: transparent;
+				box-shadow: none;
+				transition: opacity 0.2s ease;
+			}
+
+			.mobile-menu-list li a:hover {
+				opacity: 0.4;
+				background: transparent;
+			}
+
+			.mobile-close-btn {
+				position: absolute;
+				top: 20px;
+				right: 25px;
+				font-size: 32px;
+				font-weight: 300;
+				background: none;
+				border: none;
+				cursor: pointer;
+				color: #333;
+				z-index: 100000;
+				padding: 0;
+				line-height: 1;
+			}
+
 			/* 📱 모바일 화면 대응 */
 			@media screen and (max-width: 736px) {
+				#header {
+					display: none !important;
+				}
+				.custom-mobile-btn {
+					display: block !important;
+				}
 				.page-container {
 					padding: 20px 15px 50px 15px;
+					margin-top: 30px;
 				}
 				.page-title {
 					font-size: 1.3rem;
@@ -164,6 +260,9 @@
 		</style>
 	</head>
 	<body class="is-preload">
+		<!-- 모바일 전용 커스텀 햄버거 버튼 -->
+		<button id="customMenuBtn" class="custom-mobile-btn" type="button">Menu</button>
+
 		<div id="page-wrapper">
 			
 			<!-- Header -->
@@ -185,6 +284,17 @@
 				</div>
 			</div>
 
+		</div>
+
+		<!-- 모바일 풀스크린 오버레이 메뉴 구조 -->
+		<div id="mobileMenuOverlay" class="mobile-overlay">
+			<button id="mobileCloseBtn" class="mobile-close-btn" type="button">&times;</button>
+			<ul class="mobile-menu-list">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="profile.html">Profile</a></li>
+				<li><a href="Architecture.html">Architecture</a></li>
+				<li><a href="Artwork.html">Artwork</a></li>
+			</ul>
 		</div>
 
 		<!-- 🪄 자바스크립트 자동 생성 및 정렬 시스템 -->
@@ -227,5 +337,48 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<!-- 순수 자바스크립트 토글 및 배경 여백 클릭 닫기 제어 스크립트 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const btn = document.getElementById('customMenuBtn');
+				const overlay = document.getElementById('mobileMenuOverlay');
+				const closeBtn = document.getElementById('mobileCloseBtn');
+				const links = document.querySelectorAll('.mobile-menu-list a');
+
+				// 1. 레고 버튼 누를 때 토글
+				if (btn && overlay) {
+					btn.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						overlay.classList.toggle('is-visible');
+					});
+				}
+
+				// 2. 우측 상단 X 닫기 버튼 누를 때
+				if (closeBtn && overlay) {
+					closeBtn.addEventListener('click', function(e) {
+						e.preventDefault();
+						overlay.classList.remove('is-visible');
+					});
+				}
+
+				// 3. 메뉴 글자를 누를 때 이동하며 닫기
+				links.forEach(function(link) {
+					link.addEventListener('click', function() {
+						overlay.classList.remove('is-visible');
+					});
+				});
+
+				// 4. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
+				if (overlay) {
+					overlay.addEventListener('click', function(e) {
+						if (e.target === overlay) {
+							overlay.classList.remove('is-visible');
+						}
+					});
+				}
+			});
+		</script>
 	</body>
 </html>
