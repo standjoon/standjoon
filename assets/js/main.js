@@ -24,41 +24,38 @@
 			}, 100);
 		});
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			alignment: 'center'
+	// ==========================================
+	// Unified Fullscreen Overlay Menu & Lego Button
+	// ==========================================
+
+		// 1. 화면 모서리에 고정될 빨간 레고 버튼 생성 및 추가
+		var $legoBtn = $(
+			'<div id="legoBtn" class="lego-menu-btn">' +
+				'<img src="images/red.png" alt="메뉴 열기">' +
+			'</div>'
+		).appendTo($body);
+
+		// 2. 반투명 전체 화면 오버레이 메뉴 생성 및 추가
+		var $menuOverlay = $(
+			'<div id="menuOverlay" class="fullscreen-menu-overlay">' +
+				'<ul>' +
+					'<li><a href="index.html">Home</a></li>' +
+					'<li><a href="profile.html">Profile</a></li>' +
+					'<li><a href="Architecture.html">Architecture</a></li>' +
+					'<li><a href="Artwork.html">Artwork</a></li>' +
+				'</ul>' +
+			'</div>'
+		).appendTo($body);
+
+		// 3. 레고 버튼 클릭 시 오버레이 메뉴 토글 기능
+		$legoBtn.on('click', function(e) {
+			e.stopPropagation();
+			$menuOverlay.toggleClass('active');
 		});
 
-	// Nav.
-
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-				'</div>'
-			)
-				.appendTo($body);
-
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+		// 4. 메뉴 안의 링크를 클릭하면 오버레이 창이 닫히도록 설정
+		$menuOverlay.find('a').on('click', function() {
+			$menuOverlay.removeClass('active');
+		});
 
 })(jQuery);
