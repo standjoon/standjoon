@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
 			body { 
@@ -33,7 +33,7 @@
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
-				color: #111111 !important;          
+				color: #111111 !important;         
 				box-shadow: none !important;        
 			}
 			
@@ -129,10 +129,106 @@
 				margin: 0;
 			}
 
+			/* 템플릿 기본 사이드바 숨김 */
+			#navPanel, #titleBar {
+				display: none !important;
+			}
+
+			/* 모바일 전용 커스텀 햄버거 버튼 (레고 PNG 아이콘) */
+			.custom-mobile-btn {
+				display: none;
+				position: fixed;
+				top: 15px;
+				left: 15px;
+				width: 44px;
+				height: 44px;
+				background-image: url('images/red.png');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+				z-index: 10005;
+				text-indent: -9999px;
+			}
+
+			/* 모바일 풀스크린 오버레이 메뉴 기본 상태 (숨김) */
+			.mobile-overlay {
+				display: none; 
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: rgba(255, 255, 255, 0.85);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				z-index: 99999;
+				justify-content: center;
+				align-items: center;
+			}
+
+			/* 자바스크립트로 제어할 클래스 */
+			.mobile-overlay.is-visible {
+				display: flex !important;
+			}
+
+			.mobile-menu-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+			}
+
+			.mobile-menu-list li {
+				margin: 22px 0;
+			}
+
+			.mobile-menu-list li a {
+				font-family: 'Oswald', sans-serif;
+				font-size: 1.05rem;
+				font-weight: 300;
+				letter-spacing: 2.5px;
+				color: #222222;
+				text-transform: uppercase;
+				text-decoration: none;
+				background: transparent;
+				box-shadow: none;
+				transition: opacity 0.2s ease;
+			}
+
+			.mobile-menu-list li a:hover {
+				opacity: 0.4;
+				background: transparent;
+			}
+
+			.mobile-close-btn {
+				position: absolute;
+				top: 20px;
+				right: 25px;
+				font-size: 32px;
+				font-weight: 300;
+				background: none;
+				border: none;
+				cursor: pointer;
+				color: #333;
+				z-index: 100000;
+				padding: 0;
+				line-height: 1;
+			}
+
 			/* 모바일 화면 대응 */
 			@media screen and (max-width: 736px) {
+				#header {
+					display: none !important;
+				}
+				.custom-mobile-btn {
+					display: block !important;
+				}
 				.page-container {
 					padding: 20px 15px 50px 15px;
+					margin-top: 30px;
 				}
 				.page-title {
 					font-size: 1.3rem;
@@ -152,6 +248,9 @@
 		</style>
 	</head>
 	<body class="is-preload">
+		<!-- 모바일 전용 커스텀 햄버거 버튼 -->
+		<button id="customMenuBtn" class="custom-mobile-btn" type="button">Menu</button>
+
 		<div id="page-wrapper">
 			
 			<!-- Header -->
@@ -176,79 +275,20 @@
 
 		</div>
 
+		<!-- 모바일 풀스크린 오버레이 메뉴 구조 -->
+		<div id="mobileMenuOverlay" class="mobile-overlay">
+			<button id="mobileCloseBtn" class="mobile-close-btn" type="button">&times;</button>
+			<ul class="mobile-menu-list">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="profile.html">Profile</a></li>
+				<li><a href="Architecture.html">Architecture</a></li>
+				<li><a href="Artwork.html">Artwork</a></li>
+			</ul>
+		</div>
+
 		<!-- 🐢 마우스를 따라다니는 거북이 요소 -->
 		<div id="following-turtle" style="position: fixed; left: 100px; top: 100px; z-index: 999999; pointer-events: none; font-size: 32px; transition: transform 0.2s ease-out;">
 			🐢
 		</div>
 
 		<!-- 🪄 자바스크립트 자동 생성 및 거북이 추적 시스템 -->
-		<script>
-			// 📌 아트워크 작업물 목록
-			const projects = [
-				{ id: 2, title: "Instatoon Example", desc: "2024", img: "images/lego.png" },
-				{ id: 1, title: "Emoticon Design", desc: "2024", img: "images/2-2 perspective.jpg" }
-			];
-
-			const container = document.getElementById('gallery-container');
-
-			projects.forEach(project => {
-				const item = document.createElement('a');
-				item.href = `detail.html?id=${project.id}`;
-				item.className = 'gallery-item';
-				
-				item.innerHTML = `
-					<div class="gallery-img-box">
-						<img src="${project.img}" alt="${project.title}" />
-					</div>
-					<div class="overlay-text-box">
-						<h3 class="project-title">${project.title}</h3>
-						<p class="project-desc">${project.desc}</p>
-					</div>
-				`;
-				
-				container.appendChild(item);
-			});
-
-			// 🐢 거북이 움직임 로직
-			const turtle = document.getElementById('following-turtle');
-			let mouseX = window.innerWidth / 2;
-			let mouseY = window.innerHeight / 2;
-			let turtleX = mouseX;
-			let turtleY = mouseY;
-
-			window.addEventListener('mousemove', (e) => {
-				mouseX = e.clientX;
-				mouseY = e.clientY;
-			});
-
-			function animateTurtle() {
-				let distX = mouseX - turtleX;
-				let distY = mouseY - turtleY;
-				
-				turtleX += distX * 0.04; // 거북이 이동 속도
-				turtleY += distY * 0.04;
-
-				turtle.style.left = turtleX + 'px';
-				turtle.style.top = turtleY + 'px';
-
-				if (distX > 1) {
-					turtle.style.transform = 'scaleX(1)';
-				} else if (distX < -1) {
-					turtle.style.transform = 'scaleX(-1)';
-				}
-
-				requestAnimationFrame(animateTurtle);
-			}
-
-			animateTurtle();
-		</script>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-	</body>
-</html>
