@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
-		<!-- 💡 이미지가 뜨지 않고 텍스트형으로만 나오도록 og:image 태그를 완전히 제거했습니다 -->
+		<!-- 💡 링크 공유 시 이미지 미리보기가 뜨지 않도록 og:image 태그 제거 -->
 		<meta property="og:title" content="standjoon" />
 		<meta property="og:description" content="archive studio" />
 
@@ -114,14 +114,14 @@
 				display: none !important;
 			}
 
-			/* 모바일 전용 커스텀 햄버거 버튼 (레고 PNG 아이콘) */
+			/* 🔴 모서리 빨간 레고 버튼 (PC/모바일 공통 유지) */
 			.custom-mobile-btn {
-				display: none;
+				display: block !important;
 				position: fixed;
-				top: 15px;
-				left: 15px;
-				width: 44px;
-				height: 44px;
+				top: 30px;
+				left: 30px;
+				width: 60px;
+				height: 60px;
 				background-image: url('images/red.png');
 				background-size: contain;
 				background-repeat: no-repeat;
@@ -131,9 +131,14 @@
 				cursor: pointer;
 				z-index: 10005;
 				text-indent: -9999px;
+				transition: transform 0.2s ease;
 			}
 
-			/* 모바일 풀스크린 오버레이 메뉴 기본 상태 (숨김) */
+			.custom-mobile-btn:hover {
+				transform: scale(1.1);
+			}
+
+			/* 반투명 흰색 전체 화면 오버레이 메뉴 */
 			.mobile-overlay {
 				display: none; 
 				position: fixed;
@@ -141,7 +146,7 @@
 				left: 0;
 				width: 100vw;
 				height: 100vh;
-				background-color: rgba(255, 255, 255, 0.85);
+				background-color: rgba(255, 255, 255, 0.92); /* 반투명 흰색 배경 */
 				backdrop-filter: blur(10px);
 				-webkit-backdrop-filter: blur(10px);
 				z-index: 99999;
@@ -149,7 +154,6 @@
 				align-items: center;
 			}
 
-			/* 자바스크립트로 제어할 클래스 */
 			.mobile-overlay.is-visible {
 				display: flex !important;
 			}
@@ -162,54 +166,41 @@
 			}
 
 			.mobile-menu-list li {
-				margin: 22px 0;
+				margin: 1.8em 0;
 			}
 
 			.mobile-menu-list li a {
 				font-family: 'Oswald', sans-serif;
-				font-size: 1.05rem;
-				font-weight: 300;
-				letter-spacing: 2.5px;
-				color: #222222;
-				text-transform: uppercase;
+				font-size: 2.2em;
+				font-weight: 700;
+				letter-spacing: 1px;
+				color: #252122; /* 진한 글자색 */
 				text-decoration: none;
 				background: transparent;
 				box-shadow: none;
-				transition: opacity 0.2s ease;
+				transition: color 0.2s ease;
 			}
 
 			.mobile-menu-list li a:hover {
-				opacity: 0.4;
+				color: #d52349;
 				background: transparent;
 			}
 
-			.mobile-close-btn {
-				position: absolute;
-				top: 20px;
-				right: 25px;
-				font-size: 32px;
-				font-weight: 300;
-				background: none;
-				border: none;
-				cursor: pointer;
-				color: #333;
-				z-index: 100000;
-				padding: 0;
-				line-height: 1;
-			}
-
-			/* 📱 모바일 화면(폭 736px 이하) 레이아웃 전환 및 정중앙 배치 설정 */
+			/* 📱 모바일 화면(폭 736px 이하) 대응 */
 			@media screen and (max-width: 736px) {
 				#header {
 					display: none !important;
 				}
 				.custom-mobile-btn {
-					display: block !important;
+					width: 45px !important;
+					height: 45px !important;
+					top: 20px !important;
+					left: 20px !important;
 				}
 				.center-image-container {
 					margin-top: 0px !important; 
-					min-height: 100vh !important; /* 💡 화면 전체 높이 사용 */
-					justify-content: center !important; /* 💡 수직 정중앙 정렬 */
+					min-height: 100vh !important; 
+					justify-content: center !important; 
 				}
 				.hover-image-box {
 					max-width: 150px !important;
@@ -225,7 +216,7 @@
 		</style>
 	</head>
 	<body class="is-preload">
-		<!-- 모바일 전용 커스텀 햄버거 버튼 -->
+		<!-- 모서리 빨간 레고 버튼 -->
 		<button id="customMenuBtn" class="custom-mobile-btn" type="button">Menu</button>
 
 		<div id="page-wrapper">
@@ -254,9 +245,8 @@
 
 		</div>
 
-		<!-- 모바일 풀스크린 오버레이 메뉴 구조 -->
+		<!-- 반투명 흰색 풀스크린 오버레이 메뉴 구조 -->
 		<div id="mobileMenuOverlay" class="mobile-overlay">
-			<button id="mobileCloseBtn" class="mobile-close-btn" type="button">&times;</button>
 			<ul class="mobile-menu-list">
 				<li><a href="index.html">Home</a></li>
 				<li><a href="profile.html">Profile</a></li>
@@ -269,4 +259,42 @@
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<!-- 토글 및 배경 여백 클릭 닫기 제어 스크립트 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const btn = document.getElementById('customMenuBtn');
+				const overlay = document.getElementById('mobileMenuOverlay');
+				const links = document.querySelectorAll('.mobile-menu-list a');
+
+				// 1. 레고 버튼 누를 때 토글
+				if (btn && overlay) {
+					btn.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						overlay.classList.toggle('is-visible');
+					});
+				}
+
+				// 2. 메뉴 글자를 누를 때 이동하며 닫기
+				links.forEach(function(link) {
+					link.addEventListener('click', function() {
+						overlay.classList.remove('is-visible');
+					});
+				});
+
+				// 3. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
+				if (overlay) {
+					overlay.addEventListener('click', function(e) {
+						if (e.target === overlay) {
+							overlay.classList.remove('is-visible');
+						}
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
