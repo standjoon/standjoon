@@ -5,11 +5,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
-		<!-- 🚫 카카오톡 및 SNS 링크 공유 시 미리보기 방지/차단 메타 태그 설정 -->
-		<meta property="og:title" content="" />
-		<meta property="og:description" content="" />
-		<meta property="og:image" content="" />
-		<meta name="twitter:card" content="summary" />
+		<!-- 💡 이미지가 뜨지 않고 텍스트형으로만 나오도록 og:image 태그를 완전히 제거했습니다 -->
+		<meta property="og:title" content="standjoon" />
+		<meta property="og:description" content="archive studio" />
 
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -271,51 +269,4 @@
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.dropotron.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<!-- 순수 자바스크립트 토글 및 배경 여백 클릭 닫기 제어 스크립트 -->
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-				const btn = document.getElementById('customMenuBtn');
-				const overlay = document.getElementById('mobileMenuOverlay');
-				const closeBtn = document.getElementById('mobileCloseBtn');
-				const links = document.querySelectorAll('.mobile-menu-list a');
-
-				// 1. 레고 버튼 누를 때 토글
-				if (btn && overlay) {
-					btn.addEventListener('click', function(e) {
-						e.preventDefault();
-						e.stopPropagation();
-						overlay.classList.toggle('is-visible');
-					});
-				}
-
-				// 2. 우측 상단 X 닫기 버튼 누를 때
-				if (closeBtn && overlay) {
-					closeBtn.addEventListener('click', function(e) {
-						e.preventDefault();
-						overlay.classList.remove('is-visible');
-					});
-				}
-
-				// 3. 메뉴 글자를 누를 때 이동하며 닫기
-				links.forEach(function(link) {
-					link.addEventListener('click', function() {
-						overlay.classList.remove('is-visible');
-					});
-				});
-
-				// 4. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
-				if (overlay) {
-					overlay.overlay.addEventListener('click', function(e) {
-						if (e.target === overlay) {
-							overlay.classList.remove('is-visible');
-						}
-					});
-				}
-			});
-		</script>
-	</body>
-</html>
+		<script src="assets/js/breakpoints.min
