@@ -42,7 +42,7 @@
 				box-shadow: none !important;        
 			}
 
-			/* 중앙 이미지 및 텍스트 정렬 */
+			/* 중앙 이미지 및 텍스트 정렬 (PC 기준) */
 			.center-image-container {
 				display: flex;
 				flex-direction: column; 
@@ -193,7 +193,7 @@
 				line-height: 1;
 			}
 
-			/* 모바일 화면(폭 736px 이하) 레이아웃 전환 */
+			/* 📱 모바일 화면(폭 736px 이하) 레이아웃 전환 및 정중앙 배치 설정 */
 			@media screen and (max-width: 736px) {
 				#header {
 					display: none !important;
@@ -203,7 +203,8 @@
 				}
 				.center-image-container {
 					margin-top: 0px !important; 
-					min-height: 60vh;
+					min-height: 100vh !important; /* 💡 화면 전체 높이 사용 */
+					justify-content: center !important; /* 💡 수직 정중앙 정렬 */
 				}
 				.hover-image-box {
 					max-width: 150px !important;
@@ -267,7 +268,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- 순수 자바스크립트 토글 제어 스크립트 -->
+		<!-- 순수 자바스크립트 토글 및 배경 여백 클릭 닫기 제어 스크립트 -->
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
 				const btn = document.getElementById('customMenuBtn');
@@ -275,13 +276,16 @@
 				const closeBtn = document.getElementById('mobileCloseBtn');
 				const links = document.querySelectorAll('.mobile-menu-list a');
 
+				// 1. 레고 버튼 누를 때 토글
 				if (btn && overlay) {
 					btn.addEventListener('click', function(e) {
 						e.preventDefault();
+						e.stopPropagation();
 						overlay.classList.toggle('is-visible');
 					});
 				}
 
+				// 2. 우측 상단 X 닫기 버튼 누를 때
 				if (closeBtn && overlay) {
 					closeBtn.addEventListener('click', function(e) {
 						e.preventDefault();
@@ -289,11 +293,21 @@
 					});
 				}
 
+				// 3. 메뉴 글자를 누를 때 이동하며 닫기
 				links.forEach(function(link) {
 					link.addEventListener('click', function() {
 						overlay.classList.remove('is-visible');
 					});
 				});
+
+				// 4. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
+				if (overlay) {
+					overlay.addEventListener('click', function(e) {
+						if (e.target === overlay) {
+							overlay.classList.remove('is-visible');
+						}
+					});
+				}
 			});
 		</script>
 	</body>
