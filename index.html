@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
-		<!-- 💡 링크 공유 시 이미지 미리보기가 뜨지 않도록 og:image 태그 제거 -->
+		<!-- 💡 링크 공유 시 이미지 미리보기가 뜨지 않도록 og:image 제거 및 타이틀/설명 설정 -->
 		<meta property="og:title" content="standjoon" />
 		<meta property="og:description" content="archive studio" />
 
@@ -114,7 +114,7 @@
 				display: none !important;
 			}
 
-			/* 🔴 모서리 빨간 레고 버튼 (PC/모바일 공통 유지) */
+			/* 🔴 모서리 빨간 레고 버튼 스타일 (60px 크기 및 호버 효과) */
 			.custom-mobile-btn {
 				display: block !important;
 				position: fixed;
@@ -138,7 +138,7 @@
 				transform: scale(1.1);
 			}
 
-			/* 반투명 흰색 전체 화면 오버레이 메뉴 */
+			/* 반투명 흰색 전체 화면 오버레이 메뉴 스타일 */
 			.mobile-overlay {
 				display: none; 
 				position: fixed;
@@ -263,7 +263,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- 토글 및 배경 여백 클릭 닫기 제어 스크립트 -->
+		<!-- 토글 및 빈 배경 클릭 시 닫기 제어 스크립트 -->
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
 				const btn = document.getElementById('customMenuBtn');
@@ -286,7 +286,7 @@
 					});
 				});
 
-				// 3. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
+				// 3. 오버레이 빈 여백(배경)을 클릭했을 때 닫히는 기능
 				if (overlay) {
 					overlay.addEventListener('click', function(e) {
 						if (e.target === overlay) {
