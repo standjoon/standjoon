@@ -319,3 +319,119 @@ input, select, textarea {
 		.row > .col-8 {
 			width: 66.66667%;
 		}
+
+		.row > .off-8 {
+			margin-left: 66.66667%;
+		}
+
+		.row > .col-9 {
+			width: 75%;
+		}
+
+		.row > .off-9 {
+			margin-left: 75%;
+		}
+
+		.row > .col-10 {
+			width: 83.33333%;
+		}
+
+		.row > .off-10 {
+			margin-left: 83.33333%;
+		}
+
+		.row > .col-11 {
+			width: 91.66667%;
+		}
+
+		.row > .off-11 {
+			margin-left: 91.66667%;
+		}
+
+		.row > .col-12 {
+			width: 100%;
+		}
+
+		.row > .off-12 {
+			margin-left: 100%;
+		}
+
+/* Fullscreen Overlay Menu & Lego Button Fix */
+	#nav {
+		display: none;
+	}
+
+	/* 레고 버튼을 좌측 상단 모서리에 딱 고정하고 크기 강제 제한 */
+	.lego-menu-btn {
+		position: fixed !important;
+		top: 30px !important;
+		left: 30px !important;
+		z-index: 10001 !important;
+		cursor: pointer !important;
+		width: 55px !important;
+		height: 55px !important;
+		max-width: 55px !important;
+		max-height: 55px !important;
+	}
+
+	/* 이미지 크기가 박스 밖으로 튀어나가지 않도록 강제 제어 */
+	.lego-menu-btn img {
+		display: block !important;
+		width: 100% !important;
+		height: 100% !important;
+		object-fit: contain !important;
+	}
+
+	@media screen and (max-width: 736px) {
+		.lego-menu-btn {
+			width: 40px !important;
+			height: 40px !important;
+			top: 20px !important;
+			left: 20px !important;
+		}
+	}
+
+	/* 반투명 흰색 전체 화면 오버레이 메뉴 */
+	.fullscreen-menu-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(255, 255, 255, 0.92);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 10000;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+
+	.fullscreen-menu-overlay.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.fullscreen-menu-overlay ul {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+	}
+
+	.fullscreen-menu-overlay ul li {
+		margin: 1.8em 0;
+	}
+
+	.fullscreen-menu-overlay ul li a {
+		font-size: 2.2em;
+		font-weight: 700;
+		color: #252122;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.fullscreen-menu-overlay ul li a:hover {
+		color: #d52349;
+	}
