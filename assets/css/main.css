@@ -317,3 +317,111 @@ input, select, textarea {
 		}
 
 		.row > .col-8 {
+			width: 66.66667%;
+		}
+
+		.row > .off-8 {
+			margin-left: 66.66667%;
+		}
+
+		.row > .col-9 {
+			width: 75%;
+		}
+
+		.row > .off-9 {
+			margin-left: 75%;
+		}
+
+		.row > .col-10 {
+			width: 83.33333%;
+		}
+
+		.row > .off-10 {
+			margin-left: 83.33333%;
+		}
+
+		.row > .col-11 {
+			width: 91.66667%;
+		}
+
+		.row > .off-11 {
+			margin-left: 91.66667%;
+		}
+
+		.row > .col-12 {
+			width: 100%;
+		}
+
+		.row > .off-12 {
+			margin-left: 100%;
+		}
+
+/* Fullscreen Overlay Menu (PC & Mobile Unified) */
+	/* 기본 내비게이션 바는 화면에서 숨김 (오직 레고 버튼 클릭 시에만 오버레이로 전체 출력) */
+	#nav {
+		display: none;
+	}
+
+	/* 레고 버튼 스타일 (원하시는 모서리 배치용) */
+	.lego-menu-btn {
+		position: fixed;
+		top: 20px;
+		left: 20px;
+		z-index: 10001;
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+	}
+
+	.lego-menu-btn img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	/* 반투명 전체 화면 오버레이 메뉴 스타일 */
+	.fullscreen-menu-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(37, 33, 34, 0.95); /* 반투명 배경 */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 10000;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+
+	/* 메뉴가 활성화(active 클래스 추가)되었을 때 */
+	.fullscreen-menu-overlay.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* 중앙 정렬된 메뉴 글자 리스트 */
+	.fullscreen-menu-overlay ul {
+		list-style: none;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+	}
+
+	.fullscreen-menu-overlay ul li {
+		margin: 1.5em 0;
+	}
+
+	.fullscreen-menu-overlay ul li a {
+		font-size: 2em;
+		font-weight: 700;
+		color: #ffffff;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.fullscreen-menu-overlay ul li a:hover {
+		color: #d52349;
+	}
