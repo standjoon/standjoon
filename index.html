@@ -4,6 +4,13 @@
 		<title>standjoon</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- 🚫 카카오톡 및 SNS 링크 공유 시 미리보기 방지/차단 메타 태그 설정 -->
+		<meta property="og:title" content="" />
+		<meta property="og:description" content="" />
+		<meta property="og:image" content="" />
+		<meta name="twitter:card" content="summary" />
+
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +45,8 @@
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
-				color: #111111 !important;         
-				box-shadow: none !important;        
+				color: #111111 !important;        
+				box-shadow: none !important;       
 			}
 
 			/* 중앙 이미지 및 텍스트 정렬 (PC 기준) */
@@ -302,7 +309,7 @@
 
 				// 4. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
 				if (overlay) {
-					overlay.addEventListener('click', function(e) {
+					overlay.overlay.addEventListener('click', function(e) {
 						if (e.target === overlay) {
 							overlay.classList.remove('is-visible');
 						}
