@@ -29,13 +29,12 @@
 				display: none !important; 
 			}
 
-			/* 💡 상단 메뉴 글자색을 명확한 어두운 색상으로 강제 고정 */
+			/* 상단 메뉴 글자색 고정 */
 			#nav > ul > li > a {
 				color: #333333 !important;
 				background: transparent !important;
 			}
 
-			/* 메뉴 선택되거나 마우스 올렸을 때도 깔끔하게 유지 */
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
@@ -43,7 +42,7 @@
 				box-shadow: none !important;        
 			}
 
-			/* 중앙 이미지 및 텍스트 정렬 (PC 기준 250px 아래로 내림) */
+			/* 중앙 이미지 및 텍스트 정렬 */
 			.center-image-container {
 				display: flex;
 				flex-direction: column; 
@@ -54,10 +53,10 @@
 				padding: 0 20px;
 				box-sizing: border-box;
 				text-align: center;
-				margin-top: 250px; /* 💡 PC에서 아래로 250px 밀어냄 */
+				margin-top: 250px;
 			}
 
-			/* 기본 이미지 박스 (PC 기준) */
+			/* 기본 이미지 박스 */
 			.hover-image-box {
 				position: relative;
 				width: 100%;
@@ -87,7 +86,6 @@
 				opacity: 1;
 			}
 
-			/* Welcome 텍스트 스타일 (WELCOME은 대문자 유지) */
 			.welcome-text {
 				font-family: 'Oswald', sans-serif;
 				font-size: 1rem;
@@ -97,42 +95,40 @@
 				margin: 0 0 25px 0;
 			}
 
-			/* 🎨 standjoon archive studio 텍스트 스타일 (소문자 적용) */
 			.intro-text {
 				font-family: 'Oswald', 'NanumHuman', sans-serif;
 				font-size: 0.85rem;
 				letter-spacing: 1.5px;
 				color: #888888;
-				text-transform: lowercase; /* 전부 소문자로 강제 변환 */
+				text-transform: lowercase;
 				margin: 0;
 			}
 
-			/* 📱 모바일 아이콘(토글 버튼) 디자인 설정 */
-			#titleBar .toggle,
-			#titleBar .toggle::before,
-			#titleBar .toggle::after {
-				background: none !important;
-				background-color: transparent !important;
-				box-shadow: none !important;
-				border: none !important;
+			/* 템플릿의 기존 구형 사이드바 패널과 기본 버튼 숨김 */
+			#navPanel, #titleBar {
+				display: none !important;
 			}
 
-			#titleBar .toggle {
-				background-image: url('images/red.png') !important; /* 본인 PNG 파일명 확인 */
-				background-size: contain !important;
-				background-repeat: no-repeat !important;
-				background-position: center !important;
-				width: 44px !important;
-				height: 44px !important;
-				padding: 0 !important;
-				text-indent: -9999px !important;
-				position: absolute !important;
-				top: 12px !important;
-				left: 12px !important;
-				z-index: 10001; /* 오버레이보다 위쪽에 보이도록 설정 */
+			/* 모바일 전용 커스텀 햄버거 버튼 (레고 PNG 아이콘) */
+			.custom-mobile-btn {
+				display: none;
+				position: fixed;
+				top: 15px;
+				left: 15px;
+				width: 44px;
+				height: 44px;
+				background-image: url('images/red.png');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+				z-index: 10005;
+				text-indent: -9999px;
 			}
 
-			/* 📱 모바일 전용 풀스크린 오버레이 메뉴 스타일 (요청하신 흰색 반투명 + 중앙 정렬 + 즉시 등장) */
+			/* 풀스크린 오버레이 메뉴 스타일 (흰색 반투명 + 흐림 효과 + 중앙 정렬) */
 			.mobile-overlay {
 				display: none; 
 				position: fixed;
@@ -140,20 +136,18 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-color: rgba(255, 255, 255, 0.90); /* 흰색 반투명 배경 */
-				backdrop-filter: blur(12px); /* 뿌연 유리 질감 효과 */
+				background-color: rgba(255, 255, 255, 0.92); /* 흰색 반투명 배경 */
+				backdrop-filter: blur(12px); /* 뿌연 유리 질감 */
 				-webkit-backdrop-filter: blur(12px);
-				z-index: 10000; /* 컨텐츠 상단에 위치 */
+				z-index: 10000;
 				justify-content: center;
 				align-items: center;
 			}
 
-			/* 자바스크립트로 active 클래스가 붙으면 화면에 바로 나타남 */
 			.mobile-overlay.active {
-				display: flex; 
+				display: flex !important; 
 			}
 
-			/* 메뉴 리스트 중앙 정렬 및 간격 */
 			.mobile-menu-list {
 				list-style: none;
 				padding: 0;
@@ -162,15 +156,15 @@
 			}
 
 			.mobile-menu-list li {
-				margin: 28px 0;
+				margin: 30px 0;
 			}
 
 			.mobile-menu-list li a {
 				font-family: 'Oswald', 'NanumHuman', sans-serif !important;
-				font-size: 1.4rem !important;
+				font-size: 1.5rem !important;
 				font-weight: 500;
 				letter-spacing: 2px;
-				color: #222222 !important;
+				color: #111111 !important;
 				text-transform: uppercase;
 				text-decoration: none;
 				transition: opacity 0.2s ease;
@@ -181,21 +175,27 @@
 				background: transparent !important;
 			}
 
-			/* 우측 상단 닫기(X) 버튼 스타일 */
+			/* 우측 상단 닫기(X) 버튼 */
 			.mobile-close-btn {
 				position: absolute;
 				top: 25px;
 				right: 25px;
-				font-size: 38px;
+				font-size: 40px;
 				background: none;
 				border: none;
 				cursor: pointer;
-				color: #222;
-				z-index: 10002;
+				color: #111;
+				z-index: 10006;
 			}
 
-			/* 📱 모바일 화면(폭 736px 이하) 크기 조절 */
+			/* 모바일 화면(폭 736px 이하) 레이아웃 전환 */
 			@media screen and (max-width: 736px) {
+				#header {
+					display: none !important;
+				}
+				.custom-mobile-btn {
+					display: block !important;
+				}
 				.center-image-container {
 					margin-top: 0px !important; 
 					min-height: 60vh;
@@ -214,9 +214,12 @@
 		</style>
 	</head>
 	<body class="is-preload">
+		<!-- 모바일 전용 커스텀 햄버거 버튼 -->
+		<button id="customMenuBtn" class="custom-mobile-btn">Menu</button>
+
 		<div id="page-wrapper">
 			
-			<!-- Header -->
+			<!-- Header (PC용) -->
 			<section id="header">
 				<nav id="nav">
 					<ul>
@@ -240,7 +243,7 @@
 
 		</div>
 
-		<!-- 📱 새로 추가된 모바일 풀스크린 오버레이 메뉴 구조 -->
+		<!-- 모바일 풀스크린 오버레이 메뉴 구조 -->
 		<div id="mobileMenuOverlay" class="mobile-overlay">
 			<button id="mobileCloseBtn" class="mobile-close-btn">&times;</button>
 			<ul class="mobile-menu-list">
@@ -259,9 +262,35 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- 📱 모바일 풀스크린 메뉴 작동 제어 스크립트 -->
+		<!-- 모바일 오버레이 메뉴 제어 스크립트 -->
 		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-				// 템플릿 기본 생성 모바일 햄버거 버튼과 커스텀 오버레이 연결
-				const toggleBtn = document.querySelector('#titleBar .toggle');
-				const overlay = document.getElementById('
+			window.addEventListener("DOMContentLoaded", function() {
+				const customMenuBtn = document.getElementById('customMenuBtn');
+				const overlay = document.getElementById('mobileMenuOverlay');
+				const closeBtn = document.getElementById('mobileCloseBtn');
+				const menuLinks = document.querySelectorAll('.mobile-menu-list a');
+
+				if (customMenuBtn && overlay) {
+					customMenuBtn.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						overlay.classList.add('active');
+					});
+				}
+
+				if (closeBtn && overlay) {
+					closeBtn.addEventListener('click', function(e) {
+						e.preventDefault();
+						overlay.classList.remove('active');
+					});
+				}
+
+				menuLinks.forEach(link => {
+					link.addEventListener('click', function() {
+						overlay.classList.remove('active');
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
