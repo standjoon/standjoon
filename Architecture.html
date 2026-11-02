@@ -301,9 +301,9 @@
 		<script>
 			const projects = [
 				{ id: 3, title: "songpa New housing", desc: "2023", img: "images/songpa sum.jpg" },
-				{ id: 2, title: "UAM Masterplan", desc: "2023", img: "images/uam sum.jpg" }, // 👈 썸네일 전용 이미지 적용 완료!
+				{ id: 2, title: "UAM Masterplan", desc: "2023", img: "images/uam sum.jpg" },
 				{ id: 1, title: "thisconnect museum", desc: "2022", img: "images/2-2 perspective.jpg" },
-				{ id: 4, title: "[0,0,1]", desc: "2024", img: "images/under sum.png" },
+				{ id: 4, title: "[0,0,-1]", desc: "2024", img: "images/under sum.png" },
 				{ id: 5, title: "igari joomak", desc: "2024", img: "images/igari sum.jpg" },
 				{ id: 6, title: "oil rig renov", desc: "2025", img: "images/oil sum.jpg" }
 			];
@@ -372,13 +372,4 @@
 
 				// 4. 오버레이 빈 여백(배경)을 터치했을 때 닫히는 기능
 				if (overlay) {
-					overlay.addEventListener('click', function(e) {
-						if (e.target === overlay) {
-							overlay.classList.remove('is-visible');
-						}
-					});
-				}
-			});
-		</script>
-	</body>
-</html>
+					overlay.addEventListener('click', function
