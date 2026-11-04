@@ -126,21 +126,25 @@
 				text-transform: uppercase;
 			}
 
-			/* 🗺️ 오픈하우스 서울 스타일의 무광 흑백 맵 영역 */
+			/* 🗺️ 오픈하우스 서울 스타일의 무광 흑백 다이어그램 맵 박스 (불필요한 UI 완벽 크롭) */
 			.detail-map-box {
 				width: 100%;
-				height: 450px; /* 지도 높이 지정 */
+				height: 420px;
 				margin-top: 20px;
 				position: relative;
+				overflow: hidden; /* 밖으로 튀어나오는 팝업, 로고, 버튼들을 깔끔하게 잘라냄 */
 				border: 1px solid #eaeaea; 
 			}
 
 			.detail-map-box iframe {
+				position: absolute;
+				top: -110px;  /* 좌측 상단 팝업 카드가 프레임 위로 완전히 벗어나도록 밀어냄 */
+				left: 0;
 				width: 100% !important;
-				height: 100% !important;
+				height: 540px !important; /* 밀어올린 만큼 높이를 늘려줌 */
 				border: none;
-				/* 💡 구글 맵 컬러를 완전히 빼고 무광 그레이 흑백톤으로 변환하는 필터 */
-				filter: grayscale(100%) brightness(103%) contrast(95%);
+				/* 💡 오픈하우스서울처럼 알록달록한 색상을 죽이고 시크한 무광 흑백톤으로 강제 변환 */
+				filter: grayscale(100%) contrast(125%) brightness(105%);
 			}
 
 			/* 모바일 화면 대응 */
@@ -153,6 +157,10 @@
 				}
 				.detail-map-box {
 					height: 300px;
+				}
+				.detail-map-box iframe {
+					height: 420px !important;
+					top: -90px;
 				}
 			}
 		</style>
@@ -194,7 +202,7 @@
 					<h3>Design Concept</h3>
 					<p id="p-desc2">스케치업 모델링을 통한 공간감 스터디와 재료적 특성을 담아내는 상세 설명란입니다.</p>
 
-					<!-- 🗺️ 오픈하우스 서울풍 무광 그레이 스케일 맵 -->
+					<!-- 🗺️ 무광 흑백 다이어그램 맵 영역 -->
 					<h3>Location Map</h3>
 					<div class="detail-map-box">
 						<iframe id="p-map" src="" allowfullscreen="" loading="lazy"></iframe>
@@ -204,12 +212,12 @@
 
 		</div>
 
-		<!-- 자바스크립트: ID별 데이터 및 무광 흑백 지도 연동 시스템 -->
+		<!-- 자바스크립트: ID별 데이터 및 지도 자동 연동 시스템 -->
 		<script>
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 각 프로젝트별 정보와 '실제 위치(location)' 세팅 (여기에 원하시는 주소를 영어로 적어주세요!)
+			// 📌 각 프로젝트별 정보와 '실제 위치(location)' 세팅
 			const projectData = {
 				"1": { 
 					title: "thisconnect museum", 
@@ -217,7 +225,7 @@
 					img: "images/2-2 perspective.jpg",
 					desc1: "Daegu covered stream museum", 
 					desc2: "Not dis just this",
-					location: "VJ89+J6 Daegu" // 👈 첫 번째 프로젝트 주소
+					location: "VJ89+J6 Daegu" 
 				},
 				"2": { 
 					title: "UAM Masterplan", 
@@ -225,7 +233,7 @@
 					img: "images/uam masterplan.jpg",
 					desc1: "Daegu UAM-Urban masterplan.", 
 					desc2: "how to draw new Axis City.",
-					location: "VJ6H+V9 Daegu" // 👈 두 번째 프로젝트 주소
+					location: "VJ6H+V9 Daegu" 
 				},
 				"3": { 
 					title: "SONGPA New housing", 
@@ -233,7 +241,7 @@
 					img: "images/songpa.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
 					desc2: "추가 상세 설명입니다.",
-					location: "Ogeum-ro 40-gil, Songpa-gu, Seoul" // 👈 송파 프로젝트 주소
+					location: "Ogeum-ro 40-gil, Songpa-gu, Seoul" 
 				},
 				"4": { 
 					title: "[0,0,-1]", 
@@ -241,7 +249,7 @@
 					img: "images/under.jpg",
 					desc1: "underbridge housing architecture competition.", 
 					desc2: "New York Manhattan housing",
-					location: "P245+XM, New York, NY" // 👈 뉴욕 프로젝트 주소
+					location: "P245+XM, New York, NY" 
 				},
 				"5": { 
 					title: "Joomak Igari", 
@@ -249,7 +257,7 @@
 					img: "images/igari.jpg",
 					desc1: "Igari rennovation project", 
 					desc2: "추가 상세 설명입니다.",
-					location: "59MP+F3 Pohang, Gyeongsangbuk-do" // 👈 이가리 프로젝트 주소
+					location: "59MP+F3 Pohang, Gyeongsangbuk-do" 
 				},
 				"6": { 
 					title: "Oil rig renovation", 
@@ -257,7 +265,7 @@
 					img: "images/oil sum.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
 					desc2: "추가 상세 설명입니다.",
-					location: "G95M+H9 Ulsan" // 👈 오일릭 프로젝트 주소 예시
+					location: "G95M+H9 Ulsan" 
 				}
 			};
 
@@ -268,21 +276,10 @@
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
 				
-				// 🗺️ CARTO 맵 임베드 링크 생성 (스타일링 포함)
-				// z=16은 줌 레벨, &layer=background&layer=labels를 통해 기본 배경과 라벨만 출력
+				// 🗺️ 구글 맵 임베드 링크 생성 (z=16 줌 레벨 적용)
 				const loc = projectData[idNum].location;
 				const mapFrame = document.getElementById('p-map');
-				mapFrame.src = `https://carto.com/location-data-services/basemaps/api/v1/map/light_all/16/${encodeURIComponent(loc)}.png?api_key=your_carto_api_key&output=embed`;
-				
-				// 💡 아까 말씀드린 오픈하우스서울 같은 시크한 흑백 다이어그램 맵을 원하신다면, 
-				// 위 줄 대신 아래 줄로 교체해서 사용하시면 됩니다. (CSS 필터와 조합하여 완벽한 흑백톤이 됩니다.)
-				// mapFrame.src = `https://carto.com/location-data-services/basemaps/api/v1/map/light_all/16/${encodeURIComponent(loc)}.png?api_key=your_carto_api_key&output=embed`;
-				
-				// 📌 만약 위의 CARTO 맵 주소가 잘 안 먹히거나 에러가 난다면, 아래의 '구글 맵 우회 크롭 방식'을 사용하시면 됩니다. 
-				// 아까 거슬렸던 정보창(말풍선)을 완전히 위로 숨기고 흑백 필터를 먹인 버전입니다.
-				// const loc = projectData[idNum].location;
-				// const mapFrame = document.getElementById('p-map');
-				// mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&z=16&output=embed`;
+				mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&z=16&output=embed`;
 			} else {
 				document.getElementById('p-title').innerText = "PROJECT TITLE " + idNum;
 				document.getElementById('p-subtitle').innerText = "Architecture & Space Archive";
