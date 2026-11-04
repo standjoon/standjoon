@@ -7,12 +7,13 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
+			/* 🏛️ 헬베티카/모던 고딕 스타일 적용 */
 			body { 
-				font-family: 'Oswald', 'NanumHuman', sans-serif !important; 
+				font-family: 'Helvetica Neue', Helvetica, Arial, 'NanumHuman', sans-serif !important; 
 				background-color: #ffffff !important; 
+				color: #222222;
 			}
 			#page-wrapper { 
 				background-color: #ffffff !important; 
@@ -40,6 +41,8 @@
 			#nav > ul > li > a {
 				color: #555555 !important;
 				background: transparent !important;
+				font-weight: 400;
+				letter-spacing: 1px;
 			}
 
 			/* 상세 페이지 본문 컨테이너 */
@@ -53,8 +56,7 @@
 			/* 목록으로 돌아가기 버튼 */
 			.back-link {
 				display: inline-block;
-				font-family: 'Oswald', sans-serif;
-				font-size: 0.9rem;
+				font-size: 0.85rem;
 				letter-spacing: 1px;
 				color: #888888;
 				text-decoration: none;
@@ -69,17 +71,17 @@
 
 			/* 상세 페이지 타이틀 */
 			.detail-title {
-				font-family: 'Oswald', sans-serif;
-				font-size: 2rem;
-				letter-spacing: 2px;
+				font-size: 1.8rem;
+				font-weight: 500;
+				letter-spacing: 1.5px;
 				color: #111111;
 				text-transform: uppercase;
-				margin-bottom: 10px;
+				margin-bottom: 8px;
 			}
 
 			.detail-subtitle {
 				font-family: 'NanumHuman', sans-serif;
-				font-size: 1rem;
+				font-size: 0.95rem;
 				color: #777777;
 				margin-bottom: 30px;
 			}
@@ -88,7 +90,7 @@
 			.detail-img-box {
 				width: 100%;
 				margin-bottom: 40px;
-				background-color: #f0f0f0;
+				background-color: #f9f9f9;
 			}
 
 			.detail-img-box img {
@@ -100,19 +102,33 @@
 			/* 텍스트 설명 구역 */
 			.detail-content {
 				font-family: 'NanumHuman', sans-serif;
-				font-size: 1rem;
+				font-size: 0.95rem;
 				color: #555555;
 				line-height: 1.8;
 			}
 
 			.detail-content h3 {
-				font-family: 'Oswald', sans-serif;
-				font-size: 1.2rem;
+				font-size: 1.05rem;
+				font-weight: 500;
 				letter-spacing: 1px;
 				color: #111111;
-				margin-top: 30px;
-				margin-bottom: 15px;
+				margin-top: 35px;
+				margin-bottom: 12px;
 				text-transform: uppercase;
+			}
+
+			/* 🗺️ 리얼 구글 맵 영역 및 흑백 모노크롬 필터 적용 */
+			.detail-map-box {
+				width: 100%;
+				margin-top: 20px;
+			}
+
+			.detail-map-box iframe {
+				width: 100% !important;
+				height: 400px !important;
+				border: none;
+				/* 💡 구글 맵 원래의 컬러를 빼고 완벽한 흑백 모노크롬톤으로 바꿔주는 마법의 필터 */
+				filter: grayscale(100%) contrast(120%);
 			}
 
 			/* 모바일 화면 대응 */
@@ -121,7 +137,7 @@
 					padding: 20px 15px 50px 15px;
 				}
 				.detail-title {
-					font-size: 1.5rem;
+					font-size: 1.4rem;
 				}
 			}
 		</style>
@@ -134,7 +150,7 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="profile.html">Profile</a></li>
+						<li><a href="profile.html">About</a></li>
 						<li class="current"><a href="Architecture.html">Architecture</a></li>
 						<li><a href="Artwork.html">Artwork</a></li>
 					</ul>
@@ -150,7 +166,7 @@
 				<h2 id="p-title" class="detail-title">Project Title</h2>
 				<p id="p-subtitle" class="detail-subtitle">Project Subtitle & Concept</p>
 
-				<!-- 상세 대표 이미지 (자바스크립트에 의해 ID별로 자동 변경됨) -->
+				<!-- 상세 대표 이미지 -->
 				<div class="detail-img-box">
 					<img id="p-img" src="" alt="Project Detail Image" />
 				</div>
@@ -162,68 +178,85 @@
 					
 					<h3>Design Concept</h3>
 					<p id="p-desc2">스케치업 모델링을 통한 공간감 스터디와 재료적 특성을 담아내는 상세 설명란입니다.</p>
+
+					<!-- 🗺️ 실제 리얼 구글 맵이 들어갈 자리 -->
+					<h3>Location Map</h3>
+					<div class="detail-map-box">
+						<iframe id="p-map" src="" allowfullscreen="" loading="lazy"></iframe>
+					</div>
 				</div>
 			</div>
 
 		</div>
 
-		<!-- 자바스크립트: ID별 데이터 및 이미지 자동 매칭 시스템 -->
+		<!-- 자바스크립트: ID별 데이터 및 리얼 지도 자동 연동 시스템 -->
 		<script>
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 각 프로젝트별 이미지와 텍스트 데이터 세팅
+			// 📌 각 프로젝트별 정보와 '실제 위치(location)' 세팅 (여기에 원하시는 주소를 영어로 적어주세요!)
 			const projectData = {
 				"1": { 
 					title: "thisconnect museum", 
 					subtitle: "This connect Museum", 
 					img: "images/2-2 perspective.jpg",
 					desc1: "Daegu covered stream museum", 
-					desc2: "Not dis just this" 
+					desc2: "Not dis just this",
+					location: "Daegu, South Korea" // 👈 첫 번째 프로젝트 주소
 				},
 				"2": { 
 					title: "UAM Masterplan", 
 					subtitle: "Urban Air Mobility Architecture", 
-					img: "images/uam masterplan.jpg", // 👈 UAM 마스터플랜 이미지 정확히 연동
+					img: "images/uam masterplan.jpg",
 					desc1: "Daegu UAM-Urban masterplan.", 
-					desc2: "how to draw new Axis City." 
+					desc2: "how to draw new Axis City.",
+					location: "Daegu, South Korea" // 👈 두 번째 프로젝트 주소
 				},
 				"3": { 
 					title: "SONGPA New housing", 
 					subtitle: "2023", 
 					img: "images/songpa.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
-					desc2: "추가 상세 설명입니다." 
+					desc2: "추가 상세 설명입니다.",
+					location: "Songpa-gu, Seoul" // 👈 송파 프로젝트 주소
 				},
 				"4": { 
 					title: "[0,0,-1]", 
 					subtitle: "2024", 
 					img: "images/under.jpg",
 					desc1: "underbridge housing architecture competition.", 
-					desc2: "New York Manhattan housing " 
+					desc2: "New York Manhattan housing",
+					location: "Manhattan Bridge, New York" // 👈 뉴욕 프로젝트 주소
 				},
 				"5": { 
 					title: "Joomak Igari", 
 					subtitle: "2024", 
 					img: "images/igari.jpg",
 					desc1: "Igari rennovation project", 
-					desc2: "추가 상세 설명입니다." 
+					desc2: "추가 상세 설명입니다.",
+					location: "Pohang-si, Gyeongsangbuk-do" // 👈 이가리 프로젝트 주소
 				},
 				"6": { 
 					title: "Oil rig renovation", 
 					subtitle: "2025", 
 					img: "images/oil sum.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
-					desc2: "추가 상세 설명입니다." 
+					desc2: "추가 상세 설명입니다.",
+					location: "North Sea" // 👈 오일릭 프로젝트 주소 예시
 				}
 			};
 
 			if (projectData[idNum]) {
 				document.getElementById('p-title').innerText = projectData[idNum].title;
 				document.getElementById('p-subtitle').innerText = projectData[idNum].subtitle;
-				document.getElementById('p-img').src = projectData[idNum].img; // 이미지 자동 교체
+				document.getElementById('p-img').src = projectData[idNum].img;
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
+				
+				// 🗺️ 주소를 바탕으로 구글 맵 리얼 지도 임베드 링크 자동 생성
+				const loc = projectData[idNum].location;
+				const mapFrame = document.getElementById('p-map');
+				mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&output=embed`;
 			} else {
 				document.getElementById('p-title').innerText = "PROJECT TITLE " + idNum;
 				document.getElementById('p-subtitle').innerText = "Architecture & Space Archive";
