@@ -9,11 +9,13 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
-			/* 🏛️ 헬베티카/모던 고딕 스타일 적용 */
+			/* 🏛️ 헬베티카/모던 고딕 스타일 및 선명한 폰트 렌더링 적용 */
 			body { 
-				font-family: 'Helvetica Neue', Helvetica, Arial, 'NanumHuman', sans-serif !important; 
+				font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "NanumHuman", sans-serif !important; 
 				background-color: #ffffff !important; 
 				color: #222222;
+				-webkit-font-smoothing: antialiased; /* 글자 안 깨지고 매끄럽게 보이도록 설정 */
+				-moz-osx-font-smoothing: grayscale;
 			}
 			#page-wrapper { 
 				background-color: #ffffff !important; 
@@ -42,7 +44,7 @@
 				color: #555555 !important;
 				background: transparent !important;
 				font-weight: 400;
-				letter-spacing: 1px;
+				letter-spacing: -0.2px;
 			}
 
 			/* 상세 페이지 본문 컨테이너 */
@@ -57,7 +59,7 @@
 			.back-link {
 				display: inline-block;
 				font-size: 0.85rem;
-				letter-spacing: 1px;
+				letter-spacing: -0.2px;
 				color: #888888;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -69,21 +71,22 @@
 				color: #111111;
 			}
 
-			/* 상세 페이지 타이틀 */
+			/* 상세 페이지 타이틀 (자간을 좁히고 무게감 있게 정돈) */
 			.detail-title {
-				font-size: 1.8rem;
-				font-weight: 500;
-				letter-spacing: 1.5px;
+				font-size: 1.7rem;
+				font-weight: 600;
+				letter-spacing: -0.5px; /* 자간을 좁혀서 엉성한 느낌 제거 */
 				color: #111111;
 				text-transform: uppercase;
-				margin-bottom: 8px;
+				margin-bottom: 6px;
 			}
 
 			.detail-subtitle {
 				font-family: 'NanumHuman', sans-serif;
-				font-size: 0.95rem;
+				font-size: 0.9rem;
 				color: #777777;
 				margin-bottom: 30px;
+				letter-spacing: -0.2px;
 			}
 
 			/* 메인 상세 이미지 박스 */
@@ -108,12 +111,12 @@
 			}
 
 			.detail-content h3 {
-				font-size: 1.05rem;
-				font-weight: 500;
-				letter-spacing: 1px;
+				font-size: 0.95rem;
+				font-weight: 600;
+				letter-spacing: 0.5px; /* 섹션 제목은 아주 미세하게 정돈 */
 				color: #111111;
 				margin-top: 35px;
-				margin-bottom: 12px;
+				margin-bottom: 10px;
 				text-transform: uppercase;
 			}
 
@@ -121,13 +124,15 @@
 			.detail-map-box {
 				width: 100%;
 				margin-top: 20px;
+				overflow: hidden;
+				border: 1px solid #eaeaea; 
 			}
 
 			.detail-map-box iframe {
 				width: 100% !important;
 				height: 400px !important;
 				border: none;
-				/* 💡 구글 맵 원래의 컬러를 빼고 완벽한 흑백 모노크롬톤으로 바꿔주는 마법의 필터 */
+				/* 💡 구글 맵 원래의 컬러를 빼고 완벽한 흑백 모노크롬톤으로 변환 */
 				filter: grayscale(100%) contrast(120%);
 			}
 
@@ -137,7 +142,7 @@
 					padding: 20px 15px 50px 15px;
 				}
 				.detail-title {
-					font-size: 1.4rem;
+					font-size: 1.3rem;
 				}
 			}
 		</style>
@@ -194,7 +199,7 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const idNum = urlParams.get('id') || '1';
 
-			// 📌 각 프로젝트별 정보와 '실제 위치(location)' 세팅 (여기에 원하시는 주소를 영어로 적어주세요!)
+			// 📌 각 프로젝트별 정보와 '실제 위치(location)' 세팅
 			const projectData = {
 				"1": { 
 					title: "thisconnect museum", 
@@ -202,7 +207,7 @@
 					img: "images/2-2 perspective.jpg",
 					desc1: "Daegu covered stream museum", 
 					desc2: "Not dis just this",
-					location: "VJ89+J6 Daegu" // 👈 첫 번째 프로젝트 주소
+					location: "VJ89+J6 Daegu" 
 				},
 				"2": { 
 					title: "UAM Masterplan", 
@@ -210,7 +215,7 @@
 					img: "images/uam masterplan.jpg",
 					desc1: "Daegu UAM-Urban masterplan.", 
 					desc2: "how to draw new Axis City.",
-					location: "VJ6H+V9 Daegu" // 👈 두 번째 프로젝트 주소
+					location: "VJ6H+V9 Daegu" 
 				},
 				"3": { 
 					title: "SONGPA New housing", 
@@ -218,7 +223,7 @@
 					img: "images/songpa.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
 					desc2: "추가 상세 설명입니다.",
-					location: "Ogeum-ro 40-gil, Songpa-gu, Seoul" // 👈 송파 프로젝트 주소
+					location: "Ogeum-ro 40-gil, Songpa-gu, Seoul" 
 				},
 				"4": { 
 					title: "[0,0,-1]", 
@@ -226,7 +231,7 @@
 					img: "images/under.jpg",
 					desc1: "underbridge housing architecture competition.", 
 					desc2: "New York Manhattan housing",
-					location: "P245+XM, New York, NY" // 👈 뉴욕 프로젝트 주소
+					location: "P245+XM, New York, NY" 
 				},
 				"5": { 
 					title: "Joomak Igari", 
@@ -234,7 +239,7 @@
 					img: "images/igari.jpg",
 					desc1: "Igari rennovation project", 
 					desc2: "추가 상세 설명입니다.",
-					location: "59MP+F3 Pohang, Gyeongsangbuk-do" // 👈 이가리 프로젝트 주소
+					location: "59MP+F3 Pohang, Gyeongsangbuk-do" 
 				},
 				"6": { 
 					title: "Oil rig renovation", 
@@ -242,7 +247,7 @@
 					img: "images/oil sum.jpg",
 					desc1: "설명이 들어갈 자리입니다.", 
 					desc2: "추가 상세 설명입니다.",
-					location: "G95M+H9 Ulsan" // 👈 오일릭 프로젝트 주소 예시
+					location: "G95M+H9 Ulsan" 
 				}
 			};
 
@@ -253,10 +258,10 @@
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
 				
-				// 🗺️ 주소를 바탕으로 구글 맵 리얼 지도 임베드 링크 자동 생성
+				// 🗺️ 주소 및 줌 레벨(z=16)을 적용하여 깔끔하게 구글 맵 임베드
 				const loc = projectData[idNum].location;
 				const mapFrame = document.getElementById('p-map');
-				mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&output=embed`;
+				mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&z=16&output=embed`;
 			} else {
 				document.getElementById('p-title').innerText = "PROJECT TITLE " + idNum;
 				document.getElementById('p-subtitle').innerText = "Architecture & Space Archive";
