@@ -9,14 +9,20 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHuman.css" rel="stylesheet">
 		<style>
-			/* 🏛️ 헬베티카/모던 고딕 스타일 및 선명한 폰트 렌더링 적용 */
-			body { 
-				font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "NanumHuman", sans-serif !important; 
+			/* 🏛️ 헬베티카 및 모던 시스템 고딕 강제 적용 */
+			body, h1, h2, h3, h4, h5, h6, p, a, span { 
+				font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important; 
 				background-color: #ffffff !important; 
-				color: #222222;
-				-webkit-font-smoothing: antialiased; /* 글자 안 깨지고 매끄럽게 보이도록 설정 */
-				-moz-osx-font-smoothing: grayscale;
+				color: #111111 !important;
+				-webkit-font-smoothing: antialiased !important; 
+				-moz-osx-font-smoothing: grayscale !important;
+				text-rendering: optimizeLegibility !important;
 			}
+
+			body {
+				background-color: #ffffff !important; 
+			}
+
 			#page-wrapper { 
 				background-color: #ffffff !important; 
 			}
@@ -32,7 +38,7 @@
 				display: none !important; 
 			}
 
-			/* 메뉴 선택된 곳의 빨간색 배경 제거 및 깔끔한 텍스트화 */
+			/* 메뉴 스타일 깔끔하게 정돈 */
 			#nav > ul > li.current > a, 
 			#nav > ul > li:hover > a {
 				background: transparent !important; 
@@ -43,8 +49,8 @@
 			#nav > ul > li > a {
 				color: #555555 !important;
 				background: transparent !important;
-				font-weight: 400;
-				letter-spacing: -0.2px;
+				font-weight: 400 !important;
+				letter-spacing: -0.3px !important;
 			}
 
 			/* 상세 페이지 본문 컨테이너 */
@@ -71,22 +77,22 @@
 				color: #111111;
 			}
 
-			/* 상세 페이지 타이틀 (자간을 좁히고 무게감 있게 정돈) */
+			/* 상세 페이지 메인 타이틀 */
 			.detail-title {
-				font-size: 1.7rem;
-				font-weight: 600;
-				letter-spacing: -0.5px; /* 자간을 좁혀서 엉성한 느낌 제거 */
-				color: #111111;
+				font-size: 1.8rem !important;
+				font-weight: 700 !important;
+				letter-spacing: -0.8px !important; 
+				color: #111111 !important;
 				text-transform: uppercase;
 				margin-bottom: 6px;
 			}
 
 			.detail-subtitle {
-				font-family: 'NanumHuman', sans-serif;
-				font-size: 0.9rem;
-				color: #777777;
+				font-size: 0.95rem !important;
+				font-weight: 400 !important;
+				color: #777777 !important;
 				margin-bottom: 30px;
-				letter-spacing: -0.2px;
+				letter-spacing: -0.3px !important;
 			}
 
 			/* 메인 상세 이미지 박스 */
@@ -104,35 +110,40 @@
 
 			/* 텍스트 설명 구역 */
 			.detail-content {
-				font-family: 'NanumHuman', sans-serif;
-				font-size: 0.95rem;
-				color: #555555;
+				font-size: 0.95rem !important;
+				color: #555555 !important;
 				line-height: 1.8;
+				letter-spacing: -0.2px !important;
 			}
 
 			.detail-content h3 {
-				font-size: 0.95rem;
-				font-weight: 600;
-				letter-spacing: 0.5px; /* 섹션 제목은 아주 미세하게 정돈 */
-				color: #111111;
+				font-size: 1rem !important;
+				font-weight: 600 !important;
+				letter-spacing: -0.3px !important;
+				color: #111111 !important;
 				margin-top: 35px;
 				margin-bottom: 10px;
 				text-transform: uppercase;
 			}
 
-			/* 🗺️ 리얼 구글 맵 영역 및 흑백 모노크롬 필터 적용 */
+			/* 🗺️ 지도의 불필요한 UI(좌측 상단 팝업, 하단 버튼 등)를 깔끔하게 숨기는 마스크 박스 */
 			.detail-map-box {
 				width: 100%;
+				height: 400px; /* 고정 높이 지정 */
 				margin-top: 20px;
-				overflow: hidden;
+				position: relative;
+				overflow: hidden; /* 영역 밖으로 튀어나오는 팝업이나 로고를 잘라냄 */
 				border: 1px solid #eaeaea; 
 			}
 
 			.detail-map-box iframe {
+				position: absolute;
+				top: -45px;   /* 위쪽 팝업 카드와 불필요한 상단 영역을 위로 밀어 숨김 */
+				left: 0;
 				width: 100% !important;
-				height: 400px !important;
+				height: 460px !important; /* 위로 숨긴 만큼 높이를 늘려줌 */
 				border: none;
-				/* 💡 구글 맵 원래의 컬러를 빼고 완벽한 흑백 모노크롬톤으로 변환 */
+				/* 💡 흑백 모노크롬톤 필터 적용 */
 				filter: grayscale(100%) contrast(120%);
 			}
 
@@ -142,7 +153,13 @@
 					padding: 20px 15px 50px 15px;
 				}
 				.detail-title {
-					font-size: 1.3rem;
+					font-size: 1.3rem !important;
+				}
+				.detail-map-box {
+					height: 300px;
+				}
+				.detail-map-box iframe {
+					height: 360px !important;
 				}
 			}
 		</style>
@@ -184,7 +201,7 @@
 					<h3>Design Concept</h3>
 					<p id="p-desc2">스케치업 모델링을 통한 공간감 스터디와 재료적 특성을 담아내는 상세 설명란입니다.</p>
 
-					<!-- 🗺️ 실제 리얼 구글 맵이 들어갈 자리 -->
+					<!-- 🗺️ 깔끔하게 크롭된 흑백 리얼 구글 맵 영역 -->
 					<h3>Location Map</h3>
 					<div class="detail-map-box">
 						<iframe id="p-map" src="" allowfullscreen="" loading="lazy"></iframe>
@@ -258,7 +275,7 @@
 				document.getElementById('p-desc1').innerText = projectData[idNum].desc1;
 				document.getElementById('p-desc2').innerText = projectData[idNum].desc2;
 				
-				// 🗺️ 주소 및 줌 레벨(z=16)을 적용하여 깔끔하게 구글 맵 임베드
+				// 🗺️ 주소 및 줌 레벨(z=16)을 적용하여 구글 맵 임베드
 				const loc = projectData[idNum].location;
 				const mapFrame = document.getElementById('p-map');
 				mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(loc)}&z=16&output=embed`;
